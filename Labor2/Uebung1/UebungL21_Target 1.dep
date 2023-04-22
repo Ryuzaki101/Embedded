@@ -1,0 +1,8 @@
+Dependencies for Project 'UebungL21', Target 'Target 1': (DO NOT MODIFY !)
+F (.\LPC2300_asm.s)(0x55646E50)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--pd "__UVISION_VERSION SETA 514"--list .\lpc2300_asm.lst --xref -o .\lpc2300_asm.o --depend .\lpc2300_asm.d)
+F (.\UART_init.s)(0x5564EDD6)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--pd "__UVISION_VERSION SETA 514"--list .\uart_init.lst --xref -o .\uart_init.o --depend .\uart_init.d)
+I (LPC2368_asm.inc)(0x4DA59E50)
+F (.\UART_PutChar.s)(0x585BF98E)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--pd "__UVISION_VERSION SETA 514"--list .\uart_putchar.lst --xref -o .\uart_putchar.o --depend .\uart_putchar.d)
+I (LPC2368_asm.inc)(0x4DA59E50)
+F (.\UART_TX_Test.s)(0x55651FA8)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--pd "__UVISION_VERSION SETA 514"--list .\uart_tx_test.lst --xref -o .\uart_tx_test.o --depend .\uart_tx_test.d)
+I (LPC2368_asm.inc)(0x4DA59E50)

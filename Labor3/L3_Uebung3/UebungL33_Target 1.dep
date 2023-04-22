@@ -1,0 +1,11 @@
+Dependencies for Project 'UebungL33', Target 'Target 1': (DO NOT MODIFY !)
+F (.\LPC2300.s)(0x51944070)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\listings\lpc2300.lst --xref -o .\objects\lpc2300.o --depend .\objects\lpc2300.d)
+F (.\can_api.c)(0x558064BA)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\objects\can_api.o --omf_browse .\objects\can_api.crf --depend .\objects\can_api.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.H)(0x53468A9A)
+I (emb1_can_labs.h)(0x558064BA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53468EA4)
+I (CAN_AcceptanceFiltering.h)(0x55812677)
+F (.\can_rx_tx.c)(0x55812609)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\objects\can_rx_tx.o --omf_browse .\objects\can_rx_tx.crf --depend .\objects\can_rx_tx.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.H)(0x53468A9A)
+I (emb1_can_labs.h)(0x558064BA)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53468EA4)

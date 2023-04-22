@@ -1,0 +1,10 @@
+Dependencies for Project 'UebungL22', Target 'Target 1': (DO NOT MODIFY !)
+F (.\LPC2300_asm.s)(0x5564FAF0)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\lpc2300_asm.lst --xref -o .\lpc2300_asm.o --depend .\lpc2300_asm.d)
+F (.\UART_GetChar.s)(0x556EB7FE)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\uart_getchar.lst --xref -o .\uart_getchar.o --depend .\uart_getchar.d)
+I (LPC2368_asm.inc)(0x4DA62AF0)
+F (.\UART_init.s)(0x55610670)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\uart_init.lst --xref -o .\uart_init.o --depend .\uart_init.d)
+I (LPC2368_asm.inc)(0x4DA62AF0)
+F (.\UART_LoopBack_ASM.s)(0x556EB7FE)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\uart_loopback_asm.lst --xref -o .\uart_loopback_asm.o --depend .\uart_loopback_asm.d)
+I (LPC2368_asm.inc)(0x4DA62AF0)
+F (.\UART_PutChar.s)(0x556EB1EF)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\uart_putchar.lst --xref -o .\uart_putchar.o --depend .\uart_putchar.d)
+I (LPC2368_asm.inc)(0x4DA62AF0)

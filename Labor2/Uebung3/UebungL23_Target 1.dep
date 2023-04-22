@@ -1,0 +1,11 @@
+Dependencies for Project 'UebungL23', Target 'Target 1': (DO NOT MODIFY !)
+F (.\LPC2300.s)(0x556E1F52)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--pd "__UVISION_VERSION SETA 514"--list .\lpc2300.lst --xref -o .\lpc2300.o --depend .\lpc2300.d)
+F (.\Template_LoopBack_C.c)(0x565D228E)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="514"-o .\template_loopback_c.o --omf_browse .\template_loopback_c.crf --depend .\template_loopback_c.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54764760)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.h)(0x53467C8A)
+F (.\UART_init.s)(0x55613A12)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--pd "__UVISION_VERSION SETA 514"--list .\uart_init.lst --xref -o .\uart_init.o --depend .\uart_init.d)
+I (LPC2368_asm.inc)(0x4DA59E50)
+F (.\UART_PutChar.s)(0x556E3658)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--pd "__UVISION_VERSION SETA 514"--list .\uart_putchar.lst --xref -o .\uart_putchar.o --depend .\uart_putchar.d)
+I (LPC2368_asm.inc)(0x4DA59E50)
+F (.\UART_GetChar.s)(0x585BE409)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--pd "__UVISION_VERSION SETA 514"--list .\uart_getchar.lst --xref -o .\uart_getchar.o --depend .\uart_getchar.d)
+I (LPC2368_asm.inc)(0x4DA59E50)

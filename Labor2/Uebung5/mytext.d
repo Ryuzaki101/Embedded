@@ -1,0 +1,1 @@
+.\mytext.o: MyText.c

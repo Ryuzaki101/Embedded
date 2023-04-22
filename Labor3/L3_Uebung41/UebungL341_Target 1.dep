@@ -1,0 +1,7 @@
+Dependencies for Project 'UebungL341', Target 'Target 1': (DO NOT MODIFY !)
+F (.\LPC2300.s)(0x51944070)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\listings\lpc2300.lst --xref -o .\objects\lpc2300.o --depend .\objects\lpc2300.d)
+F (.\main.c)(0x55811E38)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.h)(0x53468A9A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x53468EA4)
+F (.\LCD_4bit.c)(0x55316606)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\objects\lcd_4bit.o --omf_browse .\objects\lcd_4bit.crf --depend .\objects\lcd_4bit.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.H)(0x53468A9A)

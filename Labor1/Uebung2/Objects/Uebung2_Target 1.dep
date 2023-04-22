@@ -1,0 +1,4 @@
+Dependencies for Project 'Uebung2', Target 'Target 1': (DO NOT MODIFY !)
+F (.\LPC2300_asm.s)(0x4DDC3870)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Program Files (x86)\Keil_v5\ARM\RV31\INC"-I "C:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-I "C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips"--pd "__UVISION_VERSION SETA 514"--list .\listings\lpc2300_asm.lst --xref -o .\objects\lpc2300_asm.o --depend .\objects\lpc2300_asm.d)
+F (.\aufg2.s)(0x5550D807)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Program Files (x86)\Keil_v5\ARM\RV31\INC"-I "C:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-I "C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips"--pd "__UVISION_VERSION SETA 514"--list .\listings\aufg2.lst --xref -o .\objects\aufg2.o --depend .\objects\aufg2.d)
+I (LPC2368_asm.inc)(0x4DA62AF0)

@@ -1,0 +1,8 @@
+--cpu ARM7TDMI
+".\objects\lpc2300.o"
+".\objects\can_api.o"
+".\objects\can_test_rx.o"
+--strict --scatter ".\Objects\UebungL32.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\UebungL32.map" -o .\Objects\UebungL32.axf

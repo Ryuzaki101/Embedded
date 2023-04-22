@@ -1,0 +1,15 @@
+--cpu ARM7TDMI
+".\init_vic_b.o"
+".\lcd_4bit.o"
+".\lpc2300.o"
+".\mytext.o"
+".\timer3_isr.o"
+".\uart_init.o"
+".\uart_isrs_b.o"
+".\uart_putchar.o"
+".\uart_via_int_autobaud.o"
+".\uart_getchar.o"
+--strict --scatter ".\UebungL25.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\UebungL25.map" -o .\UebungL25.axf

@@ -1,0 +1,17 @@
+Dependencies for Project 'UebungL341', Target 'Target 1': (DO NOT MODIFY !)
+F (.\LPC2300.s)(0x51944070)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Program Files (x86)\Keil_v5\ARM\RV31\INC"-I "C:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-I "C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips"--pd "__UVISION_VERSION SETA 514"--list .\lpc2300.lst --xref -o .\lpc2300.o --depend .\lpc2300.d)
+F (.\main.c)(0x5581725B)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\Program Files (x86)\Keil_v5\ARM\RV31\INC"-I "C:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-I "C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips"-D__UVISION_VERSION="514"-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+I (C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips\LPC23xx.h)(0x53468A9A)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54765570)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\math.h)(0x5476556E)
+I (emb1_can_labs.h)(0x558064BA)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54765570)
+F (.\CAN_AcceptanceFiltering.h)(0x55815A28)()
+F (.\can_api.c)(0x558064BA)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\Program Files (x86)\Keil_v5\ARM\RV31\INC"-I "C:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-I "C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips"-D__UVISION_VERSION="514"-o .\can_api.o --omf_browse .\can_api.crf --depend .\can_api.d)
+I (C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips\LPC23xx.H)(0x53468A9A)
+I (emb1_can_labs.h)(0x558064BA)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54765570)
+I (CAN_AcceptanceFiltering.h)(0x55815A28)
+F (.\emb1_can_labs.h)(0x558064BA)()
+F (.\LCD_4bit.c)(0x55316606)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I "C:\Program Files (x86)\Keil_v5\ARM\RV31\INC"-I "C:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-I "C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips"-D__UVISION_VERSION="514"-o .\lcd_4bit.o --omf_browse .\lcd_4bit.crf --depend .\lcd_4bit.d)
+I (C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips\LPC23xx.H)(0x53468A9A)

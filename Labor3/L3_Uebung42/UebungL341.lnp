@@ -1,0 +1,9 @@
+--cpu ARM7TDMI
+".\lpc2300.o"
+".\main.o"
+".\can_api.o"
+".\lcd_4bit.o"
+--strict --scatter ".\UebungL341.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\UebungL341.map" -o .\UebungL341.axf

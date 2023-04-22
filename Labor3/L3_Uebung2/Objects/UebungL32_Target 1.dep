@@ -1,0 +1,12 @@
+Dependencies for Project 'UebungL32', Target 'Target 1': (DO NOT MODIFY !)
+F (.\LPC2300.s)(0x51944070)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I "C:\Program Files (x86)\Keil_v5\ARM\RV31\INC"-I "C:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-I "C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips"--pd "__UVISION_VERSION SETA 514"--list .\listings\lpc2300.lst --xref -o .\objects\lpc2300.o --depend .\objects\lpc2300.d)
+F (.\can_api.c)(0x55802910)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Program Files (x86)\Keil_v5\ARM\RV31\INC"-I "C:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-I "C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips"-D__UVISION_VERSION="514"-o .\objects\can_api.o --omf_browse .\objects\can_api.crf --depend .\objects\can_api.d)
+I (C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips\LPC23xx.H)(0x53468A9A)
+I (emb1_can_labs.h)(0x55806886)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54765570)
+I (CAN_AcceptanceFiltering.h)(0x55812062)
+F (.\can_test_rx.c)(0x558121E6)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork --split_sections-I "C:\Program Files (x86)\Keil_v5\ARM\RV31\INC"-I "C:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-I "C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips"-D__UVISION_VERSION="514"-o .\objects\can_test_rx.o --omf_browse .\objects\can_test_rx.crf --depend .\objects\can_test_rx.d)
+I (C:\Program Files (x86)\Keil_v5\ARM\Inc\Philips\LPC23xx.h)(0x53468A9A)
+I (emb1_can_labs.h)(0x55806886)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54765570)
+I (C:\Program Files (x86)\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54765570)

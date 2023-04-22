@@ -1,0 +1,9 @@
+--cpu ARM7TDMI
+".\lpc2300_asm.o"
+".\uart_init.o"
+".\uart_putchar.o"
+".\uart_tx_test.o"
+--strict --scatter ".\UebungL21.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\UebungL21.map" -o .\UebungL21.axf

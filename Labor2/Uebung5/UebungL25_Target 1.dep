@@ -1,0 +1,23 @@
+Dependencies for Project 'UebungL25', Target 'Target 1': (DO NOT MODIFY !)
+F (.\init_VIC_b.c)(0x55781BD0)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\init_vic_b.o --omf_browse .\init_vic_b.crf --depend .\init_vic_b.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.h)(0x53468A9A)
+F (.\LCD_4bit.c)(0x55316606)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\lcd_4bit.o --omf_browse .\lcd_4bit.crf --depend .\lcd_4bit.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.H)(0x53468A9A)
+F (.\LPC2300.s)(0x51944070)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\lpc2300.lst --xref -o .\lpc2300.o --depend .\lpc2300.d)
+F (.\MyText.c)(0x556A40F0)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\mytext.o --omf_browse .\mytext.crf --depend .\mytext.d)
+F (.\Timer3_ISR.c)(0x55783A5C)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\timer3_isr.o --omf_browse .\timer3_isr.crf --depend .\timer3_isr.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.h)(0x53468A9A)
+F (.\UART_init.s)(0x5561C6B2)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\uart_init.lst --xref -o .\uart_init.o --depend .\uart_init.d)
+I (LPC2368_asm.inc)(0x4DA62AF0)
+F (.\UART_ISRs_b.c)(0x55783F70)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\uart_isrs_b.o --omf_browse .\uart_isrs_b.crf --depend .\uart_isrs_b.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.h)(0x53468A9A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x53468EA4)
+I (uart.h)(0x556A5326)
+F (.\UART_PutChar.s)(0x5570E680)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\uart_putchar.lst --xref -o .\uart_putchar.o --depend .\uart_putchar.d)
+I (LPC2368_asm.inc)(0x4DA62AF0)
+F (.\UART_via_INT_AutoBaud.c)(0x55783EA8)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\uart_via_int_autobaud.o --omf_browse .\uart_via_int_autobaud.crf --depend .\uart_via_int_autobaud.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x53468EA4)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.h)(0x53468A9A)
+I (uart.h)(0x556A5326)
+F (.\UART_GetChar.s)(0x556EBFA8)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\uart_getchar.lst --xref -o .\uart_getchar.o --depend .\uart_getchar.d)
+I (LPC2368_asm.inc)(0x4DA62AF0)

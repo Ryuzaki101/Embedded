@@ -1,0 +1,4341 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             aufg1, CODE, READONLY
+    2 00000000                 INCLUDE          LPC2368_asm.inc
+    1 00000000         ;*******************************************************
+                       *************************
+    2 00000000         ;*   LPC23xx.inc:  Include file for NXP LPC23xx/24xx Fam
+                       ily Microprocessors     *
+    3 00000000         ;*                                                      
+                                               *
+    4 00000000         ;*   Inkludieren mit: INCLUDE LPC2368_asm.inc           
+                                               *
+    5 00000000         ;*                                                      
+                                               *
+    6 00000000         ;*   08.04.2008  ver 2.00   HS-Mannheim (KRU/Uru)       
+                                         *
+    7 00000000         ;*   Adressen der Register:                             
+                                               *   
+    8 00000000         ;*   FIO0-4                                             
+                                               *
+    9 00000000         ;*   PCONP                                              
+                               *
+   10 00000000         ;*   Fast IO Ports FIO0-3                               
+                                             *
+   11 00000000         ;*  VIC (Vectored Interrupt Controller)                 
+                                           *
+   12 00000000         ;*   PINSEL                                             
+                       *
+   13 00000000         ;*   UART0-3                                            
+                       *
+   14 00000000         ;*   TIMER0-3                                           
+                           *
+   15 00000000         ;*   ADC                                             *
+   16 00000000         ;*                                                  *
+   17 00000000         ;*******************************************************
+                       *************************
+   18 00000000         ; IF :DEF:__LPC_asm
+   19 00000000                 IF               (:LNOT:(:DEF:__LPC_asm))
+  511                          ENDIF
+  512 00000000                 END
+    3 00000000                 EXPORT           start
+    4 00000000         
+    5 00000000 E59F0028 
+                       start   LDR              R0, =FIO2_DIR0 ;R0 -> FIO2_DIR0
+                                                            -Block
+    6 00000004 E5D01000        LDRB             R1, [R0]    ;load FIO2_DIR0-Blo
+                                                            ck to R1 
+    7 00000008 E3811011        ORR              R1, R1, #0x11 ;set Pin2.0 and 2
+                                                            .4 to output in R1 
+                                                            
+    8 0000000C E5C01000        STRB             R1, [R0]    ;writeback R1 to FI
+                                                            O2_DIR0-Block
+    9 00000010         
+   10 00000010 E59F001C        LDR              R0, =FIO2_PIN0 ;R0 -> FIO2-PIN0
+                                                            -Block
+   11 00000014 E59F101C        LDR              R1, =FIO2_PIN1 ;R1 -> FIO2-PIN1
+                                                            -Block
+   12 00000018         
+   13 00000018 E5D12000 
+                       polling LDRB             R2, [R1]    ;load FIO2_PIN1-Blo
+                                                            ck to R2 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   14 0000001C E3120004        TST              R2, #0x4    ;button(Pin2.10) pr
+                                                            essed?  
+   15 00000020 13A02000        MOVNE            R2, #0x0    ;depending on <butt
+                                                            on ressed>: set <Pi
+                                                            n2.0 - Pin2.7 to "l
+                                                            ow"> or...
+   16 00000024 03A02011        MOVEQ            R2, #0x11   ; ...Pin2.0 and Pin
+                                                            2.4 to "high" in R2
+                                                            
+   17 00000028 E5C02000        STRB             R2, [R0]    ;store R2 to FIO2-P
+                                                            IN0-Block
+   18 0000002C EAFFFFF9        B                polling     ;do "polling" forev
+                                                            er
+   19 00000030         
+   20 00000030                 END
+              3FFFC040 
+              3FFFC054 
+              3FFFC055 
+Command Line: --debug --xref --apcs=interwork --depend=.\objects\aufg1.d -o.\ob
+jects\aufg1.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include -IC:\Kei
+l_v5\ARM\Inc\Philips --list=.\listings\aufg1.lst aufg1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FIO0_CLRU 00000000
+
+Symbol: FIO0_CLRU
+   Definitions
+      At line 68 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_CLRU unused
+__LPC_asm 00000000
+
+Symbol: __LPC_asm
+   Definitions
+      At line 20 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: __LPC_asm unused
+aufg1 00000000
+
+Symbol: aufg1
+   Definitions
+      At line 1 in file aufg1.s
+   Uses
+      None
+Comment: aufg1 unused
+polling 00000018
+
+Symbol: polling
+   Definitions
+      At line 13 in file aufg1.s
+   Uses
+      At line 18 in file aufg1.s
+Comment: polling used once
+start 00000000
+
+Symbol: start
+   Definitions
+      At line 5 in file aufg1.s
+   Uses
+      At line 3 in file aufg1.s
+Comment: start used once
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+AD0CR E0034000
+
+Symbol: AD0CR
+   Definitions
+      At line 498 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0CR unused
+AD0DR0 E0034010
+
+Symbol: AD0DR0
+   Definitions
+      At line 501 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0DR0 unused
+AD0DR1 E0034014
+
+Symbol: AD0DR1
+   Definitions
+      At line 502 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0DR1 unused
+AD0DR2 E0034018
+
+Symbol: AD0DR2
+   Definitions
+      At line 503 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0DR2 unused
+AD0DR3 E003401C
+
+Symbol: AD0DR3
+   Definitions
+      At line 504 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0DR3 unused
+AD0DR4 E0034020
+
+Symbol: AD0DR4
+   Definitions
+      At line 505 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0DR4 unused
+AD0DR5 E0034024
+
+Symbol: AD0DR5
+   Definitions
+      At line 506 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0DR5 unused
+AD0DR6 E0034028
+
+Symbol: AD0DR6
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 507 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0DR6 unused
+AD0DR7 E003402C
+
+Symbol: AD0DR7
+   Definitions
+      At line 508 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0DR7 unused
+AD0GDR E0034004
+
+Symbol: AD0GDR
+   Definitions
+      At line 499 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0GDR unused
+AD0INTEN E003400C
+
+Symbol: AD0INTEN
+   Definitions
+      At line 500 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0INTEN unused
+AD0STAT E0034030
+
+Symbol: AD0STAT
+   Definitions
+      At line 509 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: AD0STAT unused
+AD0_BASE_ADDR E0034000
+
+Symbol: AD0_BASE_ADDR
+   Definitions
+      At line 497 in file LPC2368_asm.inc
+   Uses
+      At line 498 in file LPC2368_asm.inc
+      At line 499 in file LPC2368_asm.inc
+      At line 500 in file LPC2368_asm.inc
+      At line 501 in file LPC2368_asm.inc
+      At line 502 in file LPC2368_asm.inc
+      At line 503 in file LPC2368_asm.inc
+      At line 504 in file LPC2368_asm.inc
+      At line 505 in file LPC2368_asm.inc
+      At line 506 in file LPC2368_asm.inc
+      At line 507 in file LPC2368_asm.inc
+      At line 508 in file LPC2368_asm.inc
+      At line 509 in file LPC2368_asm.inc
+
+FIO0_BASE_ADDR 3FFFC000
+
+Symbol: FIO0_BASE_ADDR
+
+
+
+ARM Macro Assembler    Page 3 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 29 in file LPC2368_asm.inc
+   Uses
+      At line 30 in file LPC2368_asm.inc
+      At line 31 in file LPC2368_asm.inc
+      At line 32 in file LPC2368_asm.inc
+      At line 33 in file LPC2368_asm.inc
+      At line 34 in file LPC2368_asm.inc
+      At line 35 in file LPC2368_asm.inc
+      At line 36 in file LPC2368_asm.inc
+      At line 38 in file LPC2368_asm.inc
+      At line 39 in file LPC2368_asm.inc
+      At line 40 in file LPC2368_asm.inc
+      At line 41 in file LPC2368_asm.inc
+      At line 42 in file LPC2368_asm.inc
+      At line 43 in file LPC2368_asm.inc
+      At line 44 in file LPC2368_asm.inc
+      At line 46 in file LPC2368_asm.inc
+      At line 47 in file LPC2368_asm.inc
+      At line 48 in file LPC2368_asm.inc
+      At line 49 in file LPC2368_asm.inc
+      At line 50 in file LPC2368_asm.inc
+      At line 51 in file LPC2368_asm.inc
+      At line 52 in file LPC2368_asm.inc
+      At line 54 in file LPC2368_asm.inc
+      At line 55 in file LPC2368_asm.inc
+      At line 56 in file LPC2368_asm.inc
+      At line 57 in file LPC2368_asm.inc
+      At line 58 in file LPC2368_asm.inc
+      At line 59 in file LPC2368_asm.inc
+      At line 60 in file LPC2368_asm.inc
+      At line 62 in file LPC2368_asm.inc
+      At line 63 in file LPC2368_asm.inc
+      At line 64 in file LPC2368_asm.inc
+      At line 65 in file LPC2368_asm.inc
+      At line 66 in file LPC2368_asm.inc
+      At line 67 in file LPC2368_asm.inc
+
+FIO0_CLR 3FFFC01C
+
+Symbol: FIO0_CLR
+   Definitions
+      At line 62 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_CLR unused
+FIO0_CLR0 3FFFC01C
+
+Symbol: FIO0_CLR0
+   Definitions
+      At line 63 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_CLR0 unused
+FIO0_CLR1 3FFFC01D
+
+Symbol: FIO0_CLR1
+   Definitions
+      At line 64 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 4 Alphabetic symbol ordering
+Absolute symbols
+
+   Uses
+      None
+Comment: FIO0_CLR1 unused
+FIO0_CLR2 3FFFC01E
+
+Symbol: FIO0_CLR2
+   Definitions
+      At line 65 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_CLR2 unused
+FIO0_CLR3 3FFFC01F
+
+Symbol: FIO0_CLR3
+   Definitions
+      At line 66 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_CLR3 unused
+FIO0_CLRL 3FFFC01C
+
+Symbol: FIO0_CLRL
+   Definitions
+      At line 67 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_CLRL unused
+FIO0_DIR 3FFFC000
+
+Symbol: FIO0_DIR
+   Definitions
+      At line 30 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_DIR unused
+FIO0_DIR0 3FFFC000
+
+Symbol: FIO0_DIR0
+   Definitions
+      At line 31 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_DIR0 unused
+FIO0_DIR1 3FFFC001
+
+Symbol: FIO0_DIR1
+   Definitions
+      At line 32 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_DIR1 unused
+FIO0_DIR2 3FFFC002
+
+Symbol: FIO0_DIR2
+   Definitions
+      At line 33 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_DIR2 unused
+
+
+
+ARM Macro Assembler    Page 5 Alphabetic symbol ordering
+Absolute symbols
+
+FIO0_DIR3 3FFFC003
+
+Symbol: FIO0_DIR3
+   Definitions
+      At line 34 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_DIR3 unused
+FIO0_DIRL 3FFFC000
+
+Symbol: FIO0_DIRL
+   Definitions
+      At line 35 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_DIRL unused
+FIO0_DIRU 3FFFC002
+
+Symbol: FIO0_DIRU
+   Definitions
+      At line 36 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_DIRU unused
+FIO0_MASK 3FFFC010
+
+Symbol: FIO0_MASK
+   Definitions
+      At line 38 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_MASK unused
+FIO0_MASK0 3FFFC010
+
+Symbol: FIO0_MASK0
+   Definitions
+      At line 39 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_MASK0 unused
+FIO0_MASK1 3FFFC011
+
+Symbol: FIO0_MASK1
+   Definitions
+      At line 40 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_MASK1 unused
+FIO0_MASK2 3FFFC012
+
+Symbol: FIO0_MASK2
+   Definitions
+      At line 41 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_MASK2 unused
+FIO0_MASK3 3FFFC013
+
+Symbol: FIO0_MASK3
+
+
+
+ARM Macro Assembler    Page 6 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 42 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_MASK3 unused
+FIO0_MASKL 3FFFC010
+
+Symbol: FIO0_MASKL
+   Definitions
+      At line 43 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_MASKL unused
+FIO0_MASKU 3FFFC012
+
+Symbol: FIO0_MASKU
+   Definitions
+      At line 44 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_MASKU unused
+FIO0_PIN 3FFFC014
+
+Symbol: FIO0_PIN
+   Definitions
+      At line 46 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_PIN unused
+FIO0_PIN0 3FFFC014
+
+Symbol: FIO0_PIN0
+   Definitions
+      At line 47 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_PIN0 unused
+FIO0_PIN1 3FFFC015
+
+Symbol: FIO0_PIN1
+   Definitions
+      At line 48 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_PIN1 unused
+FIO0_PIN2 3FFFC016
+
+Symbol: FIO0_PIN2
+   Definitions
+      At line 49 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_PIN2 unused
+FIO0_PIN3 3FFFC017
+
+Symbol: FIO0_PIN3
+   Definitions
+      At line 50 in file LPC2368_asm.inc
+   Uses
+
+
+
+ARM Macro Assembler    Page 7 Alphabetic symbol ordering
+Absolute symbols
+
+      None
+Comment: FIO0_PIN3 unused
+FIO0_PINL 3FFFC014
+
+Symbol: FIO0_PINL
+   Definitions
+      At line 51 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_PINL unused
+FIO0_PINU 3FFFC016
+
+Symbol: FIO0_PINU
+   Definitions
+      At line 52 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_PINU unused
+FIO0_SET 3FFFC018
+
+Symbol: FIO0_SET
+   Definitions
+      At line 54 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_SET unused
+FIO0_SET0 3FFFC018
+
+Symbol: FIO0_SET0
+   Definitions
+      At line 55 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_SET0 unused
+FIO0_SET1 3FFFC019
+
+Symbol: FIO0_SET1
+   Definitions
+      At line 56 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_SET1 unused
+FIO0_SET2 3FFFC01A
+
+Symbol: FIO0_SET2
+   Definitions
+      At line 57 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_SET2 unused
+FIO0_SET3 3FFFC01B
+
+Symbol: FIO0_SET3
+   Definitions
+      At line 58 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_SET3 unused
+FIO0_SETL 3FFFC018
+
+
+
+ARM Macro Assembler    Page 8 Alphabetic symbol ordering
+Absolute symbols
+
+
+Symbol: FIO0_SETL
+   Definitions
+      At line 59 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_SETL unused
+FIO0_SETU 3FFFC01A
+
+Symbol: FIO0_SETU
+   Definitions
+      At line 60 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO0_SETU unused
+FIO1_BASE_ADDR 3FFFC000
+
+Symbol: FIO1_BASE_ADDR
+   Definitions
+      At line 71 in file LPC2368_asm.inc
+   Uses
+      At line 68 in file LPC2368_asm.inc
+      At line 72 in file LPC2368_asm.inc
+      At line 73 in file LPC2368_asm.inc
+      At line 74 in file LPC2368_asm.inc
+      At line 75 in file LPC2368_asm.inc
+      At line 76 in file LPC2368_asm.inc
+      At line 77 in file LPC2368_asm.inc
+      At line 78 in file LPC2368_asm.inc
+      At line 80 in file LPC2368_asm.inc
+      At line 81 in file LPC2368_asm.inc
+      At line 82 in file LPC2368_asm.inc
+      At line 83 in file LPC2368_asm.inc
+      At line 84 in file LPC2368_asm.inc
+      At line 85 in file LPC2368_asm.inc
+      At line 86 in file LPC2368_asm.inc
+      At line 88 in file LPC2368_asm.inc
+      At line 89 in file LPC2368_asm.inc
+      At line 90 in file LPC2368_asm.inc
+      At line 91 in file LPC2368_asm.inc
+      At line 92 in file LPC2368_asm.inc
+      At line 93 in file LPC2368_asm.inc
+      At line 94 in file LPC2368_asm.inc
+      At line 96 in file LPC2368_asm.inc
+      At line 97 in file LPC2368_asm.inc
+      At line 98 in file LPC2368_asm.inc
+      At line 99 in file LPC2368_asm.inc
+      At line 100 in file LPC2368_asm.inc
+      At line 101 in file LPC2368_asm.inc
+      At line 102 in file LPC2368_asm.inc
+      At line 104 in file LPC2368_asm.inc
+      At line 105 in file LPC2368_asm.inc
+      At line 106 in file LPC2368_asm.inc
+      At line 107 in file LPC2368_asm.inc
+      At line 108 in file LPC2368_asm.inc
+      At line 109 in file LPC2368_asm.inc
+      At line 110 in file LPC2368_asm.inc
+      At line 194 in file LPC2368_asm.inc
+      At line 236 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 9 Alphabetic symbol ordering
+Absolute symbols
+
+
+FIO1_CLR 3FFFC03C
+
+Symbol: FIO1_CLR
+   Definitions
+      At line 104 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_CLR unused
+FIO1_CLR0 3FFFC03C
+
+Symbol: FIO1_CLR0
+   Definitions
+      At line 105 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_CLR0 unused
+FIO1_CLR1 3FFFC03D
+
+Symbol: FIO1_CLR1
+   Definitions
+      At line 106 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_CLR1 unused
+FIO1_CLR2 3FFFC03E
+
+Symbol: FIO1_CLR2
+   Definitions
+      At line 107 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_CLR2 unused
+FIO1_CLR3 3FFFC03F
+
+Symbol: FIO1_CLR3
+   Definitions
+      At line 108 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_CLR3 unused
+FIO1_CLRL 3FFFC03C
+
+Symbol: FIO1_CLRL
+   Definitions
+      At line 109 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_CLRL unused
+FIO1_CLRU 3FFFC03E
+
+Symbol: FIO1_CLRU
+   Definitions
+      At line 110 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_CLRU unused
+FIO1_DIR 3FFFC020
+
+
+
+
+ARM Macro Assembler    Page 10 Alphabetic symbol ordering
+Absolute symbols
+
+Symbol: FIO1_DIR
+   Definitions
+      At line 72 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_DIR unused
+FIO1_DIR0 3FFFC020
+
+Symbol: FIO1_DIR0
+   Definitions
+      At line 73 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_DIR0 unused
+FIO1_DIR1 3FFFC021
+
+Symbol: FIO1_DIR1
+   Definitions
+      At line 74 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_DIR1 unused
+FIO1_DIR2 3FFFC022
+
+Symbol: FIO1_DIR2
+   Definitions
+      At line 75 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_DIR2 unused
+FIO1_DIR3 3FFFC023
+
+Symbol: FIO1_DIR3
+   Definitions
+      At line 76 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_DIR3 unused
+FIO1_DIRL 3FFFC020
+
+Symbol: FIO1_DIRL
+   Definitions
+      At line 77 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_DIRL unused
+FIO1_DIRU 3FFFC022
+
+Symbol: FIO1_DIRU
+   Definitions
+      At line 78 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_DIRU unused
+FIO1_MASK 3FFFC030
+
+Symbol: FIO1_MASK
+   Definitions
+      At line 80 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 11 Alphabetic symbol ordering
+Absolute symbols
+
+   Uses
+      None
+Comment: FIO1_MASK unused
+FIO1_MASK0 3FFFC030
+
+Symbol: FIO1_MASK0
+   Definitions
+      At line 81 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_MASK0 unused
+FIO1_MASK1 3FFFC031
+
+Symbol: FIO1_MASK1
+   Definitions
+      At line 82 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_MASK1 unused
+FIO1_MASK2 3FFFC032
+
+Symbol: FIO1_MASK2
+   Definitions
+      At line 83 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_MASK2 unused
+FIO1_MASK3 3FFFC033
+
+Symbol: FIO1_MASK3
+   Definitions
+      At line 84 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_MASK3 unused
+FIO1_MASKL 3FFFC030
+
+Symbol: FIO1_MASKL
+   Definitions
+      At line 85 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_MASKL unused
+FIO1_MASKU 3FFFC032
+
+Symbol: FIO1_MASKU
+   Definitions
+      At line 86 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_MASKU unused
+FIO1_PIN 3FFFC034
+
+Symbol: FIO1_PIN
+   Definitions
+      At line 88 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_PIN unused
+
+
+
+ARM Macro Assembler    Page 12 Alphabetic symbol ordering
+Absolute symbols
+
+FIO1_PIN0 3FFFC034
+
+Symbol: FIO1_PIN0
+   Definitions
+      At line 89 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_PIN0 unused
+FIO1_PIN1 3FFFC035
+
+Symbol: FIO1_PIN1
+   Definitions
+      At line 90 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_PIN1 unused
+FIO1_PIN2 3FFFC036
+
+Symbol: FIO1_PIN2
+   Definitions
+      At line 91 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_PIN2 unused
+FIO1_PIN3 3FFFC037
+
+Symbol: FIO1_PIN3
+   Definitions
+      At line 92 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_PIN3 unused
+FIO1_PINL 3FFFC034
+
+Symbol: FIO1_PINL
+   Definitions
+      At line 93 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_PINL unused
+FIO1_PINU 3FFFC036
+
+Symbol: FIO1_PINU
+   Definitions
+      At line 94 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_PINU unused
+FIO1_SET 3FFFC038
+
+Symbol: FIO1_SET
+   Definitions
+      At line 96 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_SET unused
+FIO1_SET0 3FFFC038
+
+Symbol: FIO1_SET0
+
+
+
+ARM Macro Assembler    Page 13 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 97 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_SET0 unused
+FIO1_SET1 3FFFC039
+
+Symbol: FIO1_SET1
+   Definitions
+      At line 98 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_SET1 unused
+FIO1_SET2 3FFFC03A
+
+Symbol: FIO1_SET2
+   Definitions
+      At line 99 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_SET2 unused
+FIO1_SET3 3FFFC03B
+
+Symbol: FIO1_SET3
+   Definitions
+      At line 100 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_SET3 unused
+FIO1_SETL 3FFFC038
+
+Symbol: FIO1_SETL
+   Definitions
+      At line 101 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_SETL unused
+FIO1_SETU 3FFFC03A
+
+Symbol: FIO1_SETU
+   Definitions
+      At line 102 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO1_SETU unused
+FIO2_BASE_ADDR 3FFFC000
+
+Symbol: FIO2_BASE_ADDR
+   Definitions
+      At line 113 in file LPC2368_asm.inc
+   Uses
+      At line 114 in file LPC2368_asm.inc
+      At line 115 in file LPC2368_asm.inc
+      At line 116 in file LPC2368_asm.inc
+      At line 117 in file LPC2368_asm.inc
+      At line 118 in file LPC2368_asm.inc
+      At line 119 in file LPC2368_asm.inc
+      At line 120 in file LPC2368_asm.inc
+      At line 122 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 14 Alphabetic symbol ordering
+Absolute symbols
+
+      At line 123 in file LPC2368_asm.inc
+      At line 124 in file LPC2368_asm.inc
+      At line 125 in file LPC2368_asm.inc
+      At line 126 in file LPC2368_asm.inc
+      At line 127 in file LPC2368_asm.inc
+      At line 128 in file LPC2368_asm.inc
+      At line 130 in file LPC2368_asm.inc
+      At line 131 in file LPC2368_asm.inc
+      At line 132 in file LPC2368_asm.inc
+      At line 133 in file LPC2368_asm.inc
+      At line 134 in file LPC2368_asm.inc
+      At line 135 in file LPC2368_asm.inc
+      At line 136 in file LPC2368_asm.inc
+      At line 138 in file LPC2368_asm.inc
+      At line 139 in file LPC2368_asm.inc
+      At line 140 in file LPC2368_asm.inc
+      At line 141 in file LPC2368_asm.inc
+      At line 142 in file LPC2368_asm.inc
+      At line 143 in file LPC2368_asm.inc
+      At line 144 in file LPC2368_asm.inc
+      At line 146 in file LPC2368_asm.inc
+      At line 147 in file LPC2368_asm.inc
+      At line 148 in file LPC2368_asm.inc
+      At line 149 in file LPC2368_asm.inc
+      At line 150 in file LPC2368_asm.inc
+      At line 151 in file LPC2368_asm.inc
+      At line 152 in file LPC2368_asm.inc
+
+FIO2_CLR 3FFFC05C
+
+Symbol: FIO2_CLR
+   Definitions
+      At line 146 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_CLR unused
+FIO2_CLR0 3FFFC05C
+
+Symbol: FIO2_CLR0
+   Definitions
+      At line 147 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_CLR0 unused
+FIO2_CLR1 3FFFC05D
+
+Symbol: FIO2_CLR1
+   Definitions
+      At line 148 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_CLR1 unused
+FIO2_CLR2 3FFFC05E
+
+Symbol: FIO2_CLR2
+   Definitions
+      At line 149 in file LPC2368_asm.inc
+   Uses
+      None
+
+
+
+ARM Macro Assembler    Page 15 Alphabetic symbol ordering
+Absolute symbols
+
+Comment: FIO2_CLR2 unused
+FIO2_CLR3 3FFFC05F
+
+Symbol: FIO2_CLR3
+   Definitions
+      At line 150 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_CLR3 unused
+FIO2_CLRL 3FFFC05C
+
+Symbol: FIO2_CLRL
+   Definitions
+      At line 151 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_CLRL unused
+FIO2_CLRU 3FFFC05E
+
+Symbol: FIO2_CLRU
+   Definitions
+      At line 152 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_CLRU unused
+FIO2_DIR 3FFFC040
+
+Symbol: FIO2_DIR
+   Definitions
+      At line 114 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_DIR unused
+FIO2_DIR0 3FFFC040
+
+Symbol: FIO2_DIR0
+   Definitions
+      At line 115 in file LPC2368_asm.inc
+   Uses
+      At line 5 in file aufg1.s
+Comment: FIO2_DIR0 used once
+FIO2_DIR1 3FFFC041
+
+Symbol: FIO2_DIR1
+   Definitions
+      At line 116 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_DIR1 unused
+FIO2_DIR2 3FFFC042
+
+Symbol: FIO2_DIR2
+   Definitions
+      At line 117 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_DIR2 unused
+FIO2_DIR3 3FFFC043
+
+
+
+
+ARM Macro Assembler    Page 16 Alphabetic symbol ordering
+Absolute symbols
+
+Symbol: FIO2_DIR3
+   Definitions
+      At line 118 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_DIR3 unused
+FIO2_DIRL 3FFFC040
+
+Symbol: FIO2_DIRL
+   Definitions
+      At line 119 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_DIRL unused
+FIO2_DIRU 3FFFC042
+
+Symbol: FIO2_DIRU
+   Definitions
+      At line 120 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_DIRU unused
+FIO2_MASK 3FFFC050
+
+Symbol: FIO2_MASK
+   Definitions
+      At line 122 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_MASK unused
+FIO2_MASK0 3FFFC050
+
+Symbol: FIO2_MASK0
+   Definitions
+      At line 123 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_MASK0 unused
+FIO2_MASK1 3FFFC051
+
+Symbol: FIO2_MASK1
+   Definitions
+      At line 124 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_MASK1 unused
+FIO2_MASK2 3FFFC052
+
+Symbol: FIO2_MASK2
+   Definitions
+      At line 125 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_MASK2 unused
+FIO2_MASK3 3FFFC053
+
+Symbol: FIO2_MASK3
+   Definitions
+      At line 126 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 17 Alphabetic symbol ordering
+Absolute symbols
+
+   Uses
+      None
+Comment: FIO2_MASK3 unused
+FIO2_MASKL 3FFFC050
+
+Symbol: FIO2_MASKL
+   Definitions
+      At line 127 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_MASKL unused
+FIO2_MASKU 3FFFC052
+
+Symbol: FIO2_MASKU
+   Definitions
+      At line 128 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_MASKU unused
+FIO2_PIN 3FFFC054
+
+Symbol: FIO2_PIN
+   Definitions
+      At line 130 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_PIN unused
+FIO2_PIN0 3FFFC054
+
+Symbol: FIO2_PIN0
+   Definitions
+      At line 131 in file LPC2368_asm.inc
+   Uses
+      At line 10 in file aufg1.s
+Comment: FIO2_PIN0 used once
+FIO2_PIN1 3FFFC055
+
+Symbol: FIO2_PIN1
+   Definitions
+      At line 132 in file LPC2368_asm.inc
+   Uses
+      At line 11 in file aufg1.s
+Comment: FIO2_PIN1 used once
+FIO2_PIN2 3FFFC056
+
+Symbol: FIO2_PIN2
+   Definitions
+      At line 133 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_PIN2 unused
+FIO2_PIN3 3FFFC057
+
+Symbol: FIO2_PIN3
+   Definitions
+      At line 134 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_PIN3 unused
+
+
+
+ARM Macro Assembler    Page 18 Alphabetic symbol ordering
+Absolute symbols
+
+FIO2_PINL 3FFFC054
+
+Symbol: FIO2_PINL
+   Definitions
+      At line 135 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_PINL unused
+FIO2_PINU 3FFFC056
+
+Symbol: FIO2_PINU
+   Definitions
+      At line 136 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_PINU unused
+FIO2_SET 3FFFC058
+
+Symbol: FIO2_SET
+   Definitions
+      At line 138 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_SET unused
+FIO2_SET0 3FFFC058
+
+Symbol: FIO2_SET0
+   Definitions
+      At line 139 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_SET0 unused
+FIO2_SET1 3FFFC059
+
+Symbol: FIO2_SET1
+   Definitions
+      At line 140 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_SET1 unused
+FIO2_SET2 3FFFC05A
+
+Symbol: FIO2_SET2
+   Definitions
+      At line 141 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_SET2 unused
+FIO2_SET3 3FFFC05B
+
+Symbol: FIO2_SET3
+   Definitions
+      At line 142 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_SET3 unused
+FIO2_SETL 3FFFC058
+
+Symbol: FIO2_SETL
+
+
+
+ARM Macro Assembler    Page 19 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 143 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_SETL unused
+FIO2_SETU 3FFFC05A
+
+Symbol: FIO2_SETU
+   Definitions
+      At line 144 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO2_SETU unused
+FIO3_BASE_ADDR 3FFFC000
+
+Symbol: FIO3_BASE_ADDR
+   Definitions
+      At line 155 in file LPC2368_asm.inc
+   Uses
+      At line 156 in file LPC2368_asm.inc
+      At line 157 in file LPC2368_asm.inc
+      At line 158 in file LPC2368_asm.inc
+      At line 159 in file LPC2368_asm.inc
+      At line 160 in file LPC2368_asm.inc
+      At line 161 in file LPC2368_asm.inc
+      At line 162 in file LPC2368_asm.inc
+      At line 164 in file LPC2368_asm.inc
+      At line 165 in file LPC2368_asm.inc
+      At line 166 in file LPC2368_asm.inc
+      At line 167 in file LPC2368_asm.inc
+      At line 168 in file LPC2368_asm.inc
+      At line 169 in file LPC2368_asm.inc
+      At line 170 in file LPC2368_asm.inc
+      At line 172 in file LPC2368_asm.inc
+      At line 173 in file LPC2368_asm.inc
+      At line 174 in file LPC2368_asm.inc
+      At line 175 in file LPC2368_asm.inc
+      At line 176 in file LPC2368_asm.inc
+      At line 177 in file LPC2368_asm.inc
+      At line 178 in file LPC2368_asm.inc
+      At line 180 in file LPC2368_asm.inc
+      At line 181 in file LPC2368_asm.inc
+      At line 182 in file LPC2368_asm.inc
+      At line 183 in file LPC2368_asm.inc
+      At line 184 in file LPC2368_asm.inc
+      At line 185 in file LPC2368_asm.inc
+      At line 186 in file LPC2368_asm.inc
+      At line 188 in file LPC2368_asm.inc
+      At line 189 in file LPC2368_asm.inc
+      At line 190 in file LPC2368_asm.inc
+      At line 191 in file LPC2368_asm.inc
+      At line 192 in file LPC2368_asm.inc
+      At line 193 in file LPC2368_asm.inc
+
+FIO3_CLR 3FFFC07C
+
+Symbol: FIO3_CLR
+   Definitions
+      At line 188 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 20 Alphabetic symbol ordering
+Absolute symbols
+
+   Uses
+      None
+Comment: FIO3_CLR unused
+FIO3_CLR0 3FFFC07C
+
+Symbol: FIO3_CLR0
+   Definitions
+      At line 189 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_CLR0 unused
+FIO3_CLR1 3FFFC07D
+
+Symbol: FIO3_CLR1
+   Definitions
+      At line 190 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_CLR1 unused
+FIO3_CLR2 3FFFC07E
+
+Symbol: FIO3_CLR2
+   Definitions
+      At line 191 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_CLR2 unused
+FIO3_CLR3 3FFFC07F
+
+Symbol: FIO3_CLR3
+   Definitions
+      At line 192 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_CLR3 unused
+FIO3_CLRL 3FFFC07C
+
+Symbol: FIO3_CLRL
+   Definitions
+      At line 193 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_CLRL unused
+FIO3_CLRU 3FFFC07E
+
+Symbol: FIO3_CLRU
+   Definitions
+      At line 194 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_CLRU unused
+FIO3_DIR 3FFFC060
+
+Symbol: FIO3_DIR
+   Definitions
+      At line 156 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_DIR unused
+
+
+
+ARM Macro Assembler    Page 21 Alphabetic symbol ordering
+Absolute symbols
+
+FIO3_DIR0 3FFFC060
+
+Symbol: FIO3_DIR0
+   Definitions
+      At line 157 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_DIR0 unused
+FIO3_DIR1 3FFFC061
+
+Symbol: FIO3_DIR1
+   Definitions
+      At line 158 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_DIR1 unused
+FIO3_DIR2 3FFFC062
+
+Symbol: FIO3_DIR2
+   Definitions
+      At line 159 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_DIR2 unused
+FIO3_DIR3 3FFFC063
+
+Symbol: FIO3_DIR3
+   Definitions
+      At line 160 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_DIR3 unused
+FIO3_DIRL 3FFFC060
+
+Symbol: FIO3_DIRL
+   Definitions
+      At line 161 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_DIRL unused
+FIO3_DIRU 3FFFC062
+
+Symbol: FIO3_DIRU
+   Definitions
+      At line 162 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_DIRU unused
+FIO3_MASK 3FFFC070
+
+Symbol: FIO3_MASK
+   Definitions
+      At line 164 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_MASK unused
+FIO3_MASK0 3FFFC070
+
+Symbol: FIO3_MASK0
+
+
+
+ARM Macro Assembler    Page 22 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 165 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_MASK0 unused
+FIO3_MASK1 3FFFC071
+
+Symbol: FIO3_MASK1
+   Definitions
+      At line 166 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_MASK1 unused
+FIO3_MASK2 3FFFC072
+
+Symbol: FIO3_MASK2
+   Definitions
+      At line 167 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_MASK2 unused
+FIO3_MASK3 3FFFC073
+
+Symbol: FIO3_MASK3
+   Definitions
+      At line 168 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_MASK3 unused
+FIO3_MASKL 3FFFC070
+
+Symbol: FIO3_MASKL
+   Definitions
+      At line 169 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_MASKL unused
+FIO3_MASKU 3FFFC072
+
+Symbol: FIO3_MASKU
+   Definitions
+      At line 170 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_MASKU unused
+FIO3_PIN 3FFFC074
+
+Symbol: FIO3_PIN
+   Definitions
+      At line 172 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_PIN unused
+FIO3_PIN0 3FFFC074
+
+Symbol: FIO3_PIN0
+   Definitions
+      At line 173 in file LPC2368_asm.inc
+   Uses
+
+
+
+ARM Macro Assembler    Page 23 Alphabetic symbol ordering
+Absolute symbols
+
+      None
+Comment: FIO3_PIN0 unused
+FIO3_PIN1 3FFFC075
+
+Symbol: FIO3_PIN1
+   Definitions
+      At line 174 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_PIN1 unused
+FIO3_PIN2 3FFFC076
+
+Symbol: FIO3_PIN2
+   Definitions
+      At line 175 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_PIN2 unused
+FIO3_PIN3 3FFFC077
+
+Symbol: FIO3_PIN3
+   Definitions
+      At line 176 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_PIN3 unused
+FIO3_PINL 3FFFC074
+
+Symbol: FIO3_PINL
+   Definitions
+      At line 177 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_PINL unused
+FIO3_PINU 3FFFC076
+
+Symbol: FIO3_PINU
+   Definitions
+      At line 178 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_PINU unused
+FIO3_SET 3FFFC078
+
+Symbol: FIO3_SET
+   Definitions
+      At line 180 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_SET unused
+FIO3_SET0 3FFFC078
+
+Symbol: FIO3_SET0
+   Definitions
+      At line 181 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_SET0 unused
+FIO3_SET1 3FFFC079
+
+
+
+ARM Macro Assembler    Page 24 Alphabetic symbol ordering
+Absolute symbols
+
+
+Symbol: FIO3_SET1
+   Definitions
+      At line 182 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_SET1 unused
+FIO3_SET2 3FFFC07A
+
+Symbol: FIO3_SET2
+   Definitions
+      At line 183 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_SET2 unused
+FIO3_SET3 3FFFC07B
+
+Symbol: FIO3_SET3
+   Definitions
+      At line 184 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_SET3 unused
+FIO3_SETL 3FFFC078
+
+Symbol: FIO3_SETL
+   Definitions
+      At line 185 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_SETL unused
+FIO3_SETU 3FFFC07A
+
+Symbol: FIO3_SETU
+   Definitions
+      At line 186 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO3_SETU unused
+FIO4_BASE_ADDR 3FFFC000
+
+Symbol: FIO4_BASE_ADDR
+   Definitions
+      At line 197 in file LPC2368_asm.inc
+   Uses
+      At line 198 in file LPC2368_asm.inc
+      At line 199 in file LPC2368_asm.inc
+      At line 200 in file LPC2368_asm.inc
+      At line 201 in file LPC2368_asm.inc
+      At line 202 in file LPC2368_asm.inc
+      At line 203 in file LPC2368_asm.inc
+      At line 204 in file LPC2368_asm.inc
+      At line 206 in file LPC2368_asm.inc
+      At line 207 in file LPC2368_asm.inc
+      At line 208 in file LPC2368_asm.inc
+      At line 209 in file LPC2368_asm.inc
+      At line 210 in file LPC2368_asm.inc
+      At line 211 in file LPC2368_asm.inc
+      At line 212 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 25 Alphabetic symbol ordering
+Absolute symbols
+
+      At line 214 in file LPC2368_asm.inc
+      At line 215 in file LPC2368_asm.inc
+      At line 216 in file LPC2368_asm.inc
+      At line 217 in file LPC2368_asm.inc
+      At line 218 in file LPC2368_asm.inc
+      At line 219 in file LPC2368_asm.inc
+      At line 220 in file LPC2368_asm.inc
+      At line 222 in file LPC2368_asm.inc
+      At line 223 in file LPC2368_asm.inc
+      At line 224 in file LPC2368_asm.inc
+      At line 225 in file LPC2368_asm.inc
+      At line 226 in file LPC2368_asm.inc
+      At line 227 in file LPC2368_asm.inc
+      At line 228 in file LPC2368_asm.inc
+      At line 230 in file LPC2368_asm.inc
+      At line 231 in file LPC2368_asm.inc
+      At line 232 in file LPC2368_asm.inc
+      At line 233 in file LPC2368_asm.inc
+      At line 234 in file LPC2368_asm.inc
+      At line 235 in file LPC2368_asm.inc
+
+FIO4_CLR 3FFFC09C
+
+Symbol: FIO4_CLR
+   Definitions
+      At line 230 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_CLR unused
+FIO4_CLR0 3FFFC09C
+
+Symbol: FIO4_CLR0
+   Definitions
+      At line 231 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_CLR0 unused
+FIO4_CLR1 3FFFC09D
+
+Symbol: FIO4_CLR1
+   Definitions
+      At line 232 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_CLR1 unused
+FIO4_CLR2 3FFFC09E
+
+Symbol: FIO4_CLR2
+   Definitions
+      At line 233 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_CLR2 unused
+FIO4_CLR3 3FFFC09F
+
+Symbol: FIO4_CLR3
+   Definitions
+      At line 234 in file LPC2368_asm.inc
+   Uses
+
+
+
+ARM Macro Assembler    Page 26 Alphabetic symbol ordering
+Absolute symbols
+
+      None
+Comment: FIO4_CLR3 unused
+FIO4_CLRL 3FFFC09C
+
+Symbol: FIO4_CLRL
+   Definitions
+      At line 235 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_CLRL unused
+FIO4_CLRU 3FFFC09E
+
+Symbol: FIO4_CLRU
+   Definitions
+      At line 236 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_CLRU unused
+FIO4_DIR 3FFFC080
+
+Symbol: FIO4_DIR
+   Definitions
+      At line 198 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_DIR unused
+FIO4_DIR0 3FFFC080
+
+Symbol: FIO4_DIR0
+   Definitions
+      At line 199 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_DIR0 unused
+FIO4_DIR1 3FFFC081
+
+Symbol: FIO4_DIR1
+   Definitions
+      At line 200 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_DIR1 unused
+FIO4_DIR2 3FFFC082
+
+Symbol: FIO4_DIR2
+   Definitions
+      At line 201 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_DIR2 unused
+FIO4_DIR3 3FFFC083
+
+Symbol: FIO4_DIR3
+   Definitions
+      At line 202 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_DIR3 unused
+FIO4_DIRL 3FFFC080
+
+
+
+ARM Macro Assembler    Page 27 Alphabetic symbol ordering
+Absolute symbols
+
+
+Symbol: FIO4_DIRL
+   Definitions
+      At line 203 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_DIRL unused
+FIO4_DIRU 3FFFC082
+
+Symbol: FIO4_DIRU
+   Definitions
+      At line 204 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_DIRU unused
+FIO4_MASK 3FFFC090
+
+Symbol: FIO4_MASK
+   Definitions
+      At line 206 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_MASK unused
+FIO4_MASK0 3FFFC090
+
+Symbol: FIO4_MASK0
+   Definitions
+      At line 207 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_MASK0 unused
+FIO4_MASK1 3FFFC091
+
+Symbol: FIO4_MASK1
+   Definitions
+      At line 208 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_MASK1 unused
+FIO4_MASK2 3FFFC092
+
+Symbol: FIO4_MASK2
+   Definitions
+      At line 209 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_MASK2 unused
+FIO4_MASK3 3FFFC093
+
+Symbol: FIO4_MASK3
+   Definitions
+      At line 210 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_MASK3 unused
+FIO4_MASKL 3FFFC090
+
+Symbol: FIO4_MASKL
+   Definitions
+
+
+
+ARM Macro Assembler    Page 28 Alphabetic symbol ordering
+Absolute symbols
+
+      At line 211 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_MASKL unused
+FIO4_MASKU 3FFFC092
+
+Symbol: FIO4_MASKU
+   Definitions
+      At line 212 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_MASKU unused
+FIO4_PIN 3FFFC094
+
+Symbol: FIO4_PIN
+   Definitions
+      At line 214 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_PIN unused
+FIO4_PIN0 3FFFC094
+
+Symbol: FIO4_PIN0
+   Definitions
+      At line 215 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_PIN0 unused
+FIO4_PIN1 3FFFC095
+
+Symbol: FIO4_PIN1
+   Definitions
+      At line 216 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_PIN1 unused
+FIO4_PIN2 3FFFC096
+
+Symbol: FIO4_PIN2
+   Definitions
+      At line 217 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_PIN2 unused
+FIO4_PIN3 3FFFC097
+
+Symbol: FIO4_PIN3
+   Definitions
+      At line 218 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_PIN3 unused
+FIO4_PINL 3FFFC094
+
+Symbol: FIO4_PINL
+   Definitions
+      At line 219 in file LPC2368_asm.inc
+   Uses
+      None
+
+
+
+ARM Macro Assembler    Page 29 Alphabetic symbol ordering
+Absolute symbols
+
+Comment: FIO4_PINL unused
+FIO4_PINU 3FFFC096
+
+Symbol: FIO4_PINU
+   Definitions
+      At line 220 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_PINU unused
+FIO4_SET 3FFFC098
+
+Symbol: FIO4_SET
+   Definitions
+      At line 222 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_SET unused
+FIO4_SET0 3FFFC098
+
+Symbol: FIO4_SET0
+   Definitions
+      At line 223 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_SET0 unused
+FIO4_SET1 3FFFC099
+
+Symbol: FIO4_SET1
+   Definitions
+      At line 224 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_SET1 unused
+FIO4_SET2 3FFFC09A
+
+Symbol: FIO4_SET2
+   Definitions
+      At line 225 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_SET2 unused
+FIO4_SET3 3FFFC09B
+
+Symbol: FIO4_SET3
+   Definitions
+      At line 226 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_SET3 unused
+FIO4_SETL 3FFFC098
+
+Symbol: FIO4_SETL
+   Definitions
+      At line 227 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_SETL unused
+FIO4_SETU 3FFFC09A
+
+
+
+
+ARM Macro Assembler    Page 30 Alphabetic symbol ordering
+Absolute symbols
+
+Symbol: FIO4_SETU
+   Definitions
+      At line 228 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: FIO4_SETU unused
+INTWAKE E01FC144
+
+Symbol: INTWAKE
+   Definitions
+      At line 26 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: INTWAKE unused
+PCON E01FC0C0
+
+Symbol: PCON
+   Definitions
+      At line 24 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PCON unused
+PCONP E01FC0C4
+
+Symbol: PCONP
+   Definitions
+      At line 25 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PCONP unused
+PIN_MODE0 E002C040
+
+Symbol: PIN_MODE0
+   Definitions
+      At line 336 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_MODE0 unused
+PIN_MODE1 E002C044
+
+Symbol: PIN_MODE1
+   Definitions
+      At line 337 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_MODE1 unused
+PIN_MODE2 E002C048
+
+Symbol: PIN_MODE2
+   Definitions
+      At line 338 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_MODE2 unused
+PIN_MODE3 E002C04C
+
+Symbol: PIN_MODE3
+   Definitions
+      At line 339 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 31 Alphabetic symbol ordering
+Absolute symbols
+
+   Uses
+      None
+Comment: PIN_MODE3 unused
+PIN_MODE4 E002C050
+
+Symbol: PIN_MODE4
+   Definitions
+      At line 340 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_MODE4 unused
+PIN_MODE5 E002C054
+
+Symbol: PIN_MODE5
+   Definitions
+      At line 341 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_MODE5 unused
+PIN_MODE6 E002C058
+
+Symbol: PIN_MODE6
+   Definitions
+      At line 342 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_MODE6 unused
+PIN_MODE7 E002C05C
+
+Symbol: PIN_MODE7
+   Definitions
+      At line 343 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_MODE7 unused
+PIN_MODE8 E002C060
+
+Symbol: PIN_MODE8
+   Definitions
+      At line 344 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_MODE8 unused
+PIN_MODE9 E002C064
+
+Symbol: PIN_MODE9
+   Definitions
+      At line 345 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_MODE9 unused
+PIN_SEL0 E002C000
+
+Symbol: PIN_SEL0
+   Definitions
+      At line 324 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL0 unused
+
+
+
+ARM Macro Assembler    Page 32 Alphabetic symbol ordering
+Absolute symbols
+
+PIN_SEL1 E002C004
+
+Symbol: PIN_SEL1
+   Definitions
+      At line 325 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL1 unused
+PIN_SEL10 E002C028
+
+Symbol: PIN_SEL10
+   Definitions
+      At line 334 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL10 unused
+PIN_SEL2 E002C008
+
+Symbol: PIN_SEL2
+   Definitions
+      At line 326 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL2 unused
+PIN_SEL3 E002C00C
+
+Symbol: PIN_SEL3
+   Definitions
+      At line 327 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL3 unused
+PIN_SEL4 E002C010
+
+Symbol: PIN_SEL4
+   Definitions
+      At line 328 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL4 unused
+PIN_SEL5 E002C014
+
+Symbol: PIN_SEL5
+   Definitions
+      At line 329 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL5 unused
+PIN_SEL6 E002C018
+
+Symbol: PIN_SEL6
+   Definitions
+      At line 330 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL6 unused
+PIN_SEL7 E002C01C
+
+Symbol: PIN_SEL7
+
+
+
+ARM Macro Assembler    Page 33 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 331 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL7 unused
+PIN_SEL8 E002C020
+
+Symbol: PIN_SEL8
+   Definitions
+      At line 332 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL8 unused
+PIN_SEL9 E002C024
+
+Symbol: PIN_SEL9
+   Definitions
+      At line 333 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: PIN_SEL9 unused
+PIN_SEL_BASE_ADDR E002C000
+
+Symbol: PIN_SEL_BASE_ADDR
+   Definitions
+      At line 323 in file LPC2368_asm.inc
+   Uses
+      At line 324 in file LPC2368_asm.inc
+      At line 325 in file LPC2368_asm.inc
+      At line 326 in file LPC2368_asm.inc
+      At line 327 in file LPC2368_asm.inc
+      At line 328 in file LPC2368_asm.inc
+      At line 329 in file LPC2368_asm.inc
+      At line 330 in file LPC2368_asm.inc
+      At line 331 in file LPC2368_asm.inc
+      At line 332 in file LPC2368_asm.inc
+      At line 333 in file LPC2368_asm.inc
+      At line 334 in file LPC2368_asm.inc
+      At line 336 in file LPC2368_asm.inc
+      At line 337 in file LPC2368_asm.inc
+      At line 338 in file LPC2368_asm.inc
+      At line 339 in file LPC2368_asm.inc
+      At line 340 in file LPC2368_asm.inc
+      At line 341 in file LPC2368_asm.inc
+      At line 342 in file LPC2368_asm.inc
+      At line 343 in file LPC2368_asm.inc
+      At line 344 in file LPC2368_asm.inc
+      At line 345 in file LPC2368_asm.inc
+
+SCB_BASE_ADDR E01FC000
+
+Symbol: SCB_BASE_ADDR
+   Definitions
+      At line 23 in file LPC2368_asm.inc
+   Uses
+      At line 24 in file LPC2368_asm.inc
+      At line 25 in file LPC2368_asm.inc
+      At line 26 in file LPC2368_asm.inc
+
+
+
+
+ARM Macro Assembler    Page 34 Alphabetic symbol ordering
+Absolute symbols
+
+T0CCR E0004028
+
+Symbol: T0CCR
+   Definitions
+      At line 428 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0CCR unused
+T0CR0 E000402C
+
+Symbol: T0CR0
+   Definitions
+      At line 429 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0CR0 unused
+T0CR1 E0004030
+
+Symbol: T0CR1
+   Definitions
+      At line 430 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0CR1 unused
+T0CR2 E0004034
+
+Symbol: T0CR2
+   Definitions
+      At line 431 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0CR2 unused
+T0CR3 E0004038
+
+Symbol: T0CR3
+   Definitions
+      At line 432 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0CR3 unused
+T0CTCR E0004070
+
+Symbol: T0CTCR
+   Definitions
+      At line 434 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0CTCR unused
+T0EMR E000403C
+
+Symbol: T0EMR
+   Definitions
+      At line 433 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0EMR unused
+T0IR E0004000
+
+Symbol: T0IR
+
+
+
+ARM Macro Assembler    Page 35 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 418 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0IR unused
+T0MCR E0004014
+
+Symbol: T0MCR
+   Definitions
+      At line 423 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0MCR unused
+T0MR0 E0004018
+
+Symbol: T0MR0
+   Definitions
+      At line 424 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0MR0 unused
+T0MR1 E000401C
+
+Symbol: T0MR1
+   Definitions
+      At line 425 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0MR1 unused
+T0MR2 E0004020
+
+Symbol: T0MR2
+   Definitions
+      At line 426 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0MR2 unused
+T0MR3 E0004024
+
+Symbol: T0MR3
+   Definitions
+      At line 427 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0MR3 unused
+T0PC E0004010
+
+Symbol: T0PC
+   Definitions
+      At line 422 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0PC unused
+T0PR E000400C
+
+Symbol: T0PR
+   Definitions
+      At line 421 in file LPC2368_asm.inc
+   Uses
+
+
+
+ARM Macro Assembler    Page 36 Alphabetic symbol ordering
+Absolute symbols
+
+      None
+Comment: T0PR unused
+T0TC E0004008
+
+Symbol: T0TC
+   Definitions
+      At line 420 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0TC unused
+T0TCR E0004004
+
+Symbol: T0TCR
+   Definitions
+      At line 419 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T0TCR unused
+T1CCR E0008028
+
+Symbol: T1CCR
+   Definitions
+      At line 448 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1CCR unused
+T1CR0 E000802C
+
+Symbol: T1CR0
+   Definitions
+      At line 449 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1CR0 unused
+T1CR1 E0008030
+
+Symbol: T1CR1
+   Definitions
+      At line 450 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1CR1 unused
+T1CR2 E0008034
+
+Symbol: T1CR2
+   Definitions
+      At line 451 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1CR2 unused
+T1CR3 E0008038
+
+Symbol: T1CR3
+   Definitions
+      At line 452 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1CR3 unused
+T1CTCR E0008070
+
+
+
+ARM Macro Assembler    Page 37 Alphabetic symbol ordering
+Absolute symbols
+
+
+Symbol: T1CTCR
+   Definitions
+      At line 454 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1CTCR unused
+T1EMR E000803C
+
+Symbol: T1EMR
+   Definitions
+      At line 453 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1EMR unused
+T1IR E0008000
+
+Symbol: T1IR
+   Definitions
+      At line 438 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1IR unused
+T1MCR E0008014
+
+Symbol: T1MCR
+   Definitions
+      At line 443 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1MCR unused
+T1MR0 E0008018
+
+Symbol: T1MR0
+   Definitions
+      At line 444 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1MR0 unused
+T1MR1 E000801C
+
+Symbol: T1MR1
+   Definitions
+      At line 445 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1MR1 unused
+T1MR2 E0008020
+
+Symbol: T1MR2
+   Definitions
+      At line 446 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1MR2 unused
+T1MR3 E0008024
+
+Symbol: T1MR3
+   Definitions
+
+
+
+ARM Macro Assembler    Page 38 Alphabetic symbol ordering
+Absolute symbols
+
+      At line 447 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1MR3 unused
+T1PC E0008010
+
+Symbol: T1PC
+   Definitions
+      At line 442 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1PC unused
+T1PR E000800C
+
+Symbol: T1PR
+   Definitions
+      At line 441 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1PR unused
+T1TC E0008008
+
+Symbol: T1TC
+   Definitions
+      At line 440 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1TC unused
+T1TCR E0008004
+
+Symbol: T1TCR
+   Definitions
+      At line 439 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T1TCR unused
+T2CCR E0070028
+
+Symbol: T2CCR
+   Definitions
+      At line 468 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2CCR unused
+T2CR0 E007002C
+
+Symbol: T2CR0
+   Definitions
+      At line 469 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2CR0 unused
+T2CR1 E0070030
+
+Symbol: T2CR1
+   Definitions
+      At line 470 in file LPC2368_asm.inc
+   Uses
+      None
+
+
+
+ARM Macro Assembler    Page 39 Alphabetic symbol ordering
+Absolute symbols
+
+Comment: T2CR1 unused
+T2CR2 E0070034
+
+Symbol: T2CR2
+   Definitions
+      At line 471 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2CR2 unused
+T2CR3 E0070038
+
+Symbol: T2CR3
+   Definitions
+      At line 472 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2CR3 unused
+T2CTCR E0070070
+
+Symbol: T2CTCR
+   Definitions
+      At line 474 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2CTCR unused
+T2EMR E007003C
+
+Symbol: T2EMR
+   Definitions
+      At line 473 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2EMR unused
+T2IR E0070000
+
+Symbol: T2IR
+   Definitions
+      At line 458 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2IR unused
+T2MCR E0070014
+
+Symbol: T2MCR
+   Definitions
+      At line 463 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2MCR unused
+T2MR0 E0070018
+
+Symbol: T2MR0
+   Definitions
+      At line 464 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2MR0 unused
+T2MR1 E007001C
+
+
+
+
+ARM Macro Assembler    Page 40 Alphabetic symbol ordering
+Absolute symbols
+
+Symbol: T2MR1
+   Definitions
+      At line 465 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2MR1 unused
+T2MR2 E0070020
+
+Symbol: T2MR2
+   Definitions
+      At line 466 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2MR2 unused
+T2MR3 E0070024
+
+Symbol: T2MR3
+   Definitions
+      At line 467 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2MR3 unused
+T2PC E0070010
+
+Symbol: T2PC
+   Definitions
+      At line 462 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2PC unused
+T2PR E007000C
+
+Symbol: T2PR
+   Definitions
+      At line 461 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2PR unused
+T2TC E0070008
+
+Symbol: T2TC
+   Definitions
+      At line 460 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2TC unused
+T2TCR E0070004
+
+Symbol: T2TCR
+   Definitions
+      At line 459 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T2TCR unused
+T3CCR E0074028
+
+Symbol: T3CCR
+   Definitions
+      At line 488 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 41 Alphabetic symbol ordering
+Absolute symbols
+
+   Uses
+      None
+Comment: T3CCR unused
+T3CR0 E007402C
+
+Symbol: T3CR0
+   Definitions
+      At line 489 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3CR0 unused
+T3CR1 E0074030
+
+Symbol: T3CR1
+   Definitions
+      At line 490 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3CR1 unused
+T3CR2 E0074034
+
+Symbol: T3CR2
+   Definitions
+      At line 491 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3CR2 unused
+T3CR3 E0074038
+
+Symbol: T3CR3
+   Definitions
+      At line 492 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3CR3 unused
+T3CTCR E0074070
+
+Symbol: T3CTCR
+   Definitions
+      At line 494 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3CTCR unused
+T3EMR E007403C
+
+Symbol: T3EMR
+   Definitions
+      At line 493 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3EMR unused
+T3IR E0074000
+
+Symbol: T3IR
+   Definitions
+      At line 478 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3IR unused
+
+
+
+ARM Macro Assembler    Page 42 Alphabetic symbol ordering
+Absolute symbols
+
+T3MCR E0074014
+
+Symbol: T3MCR
+   Definitions
+      At line 483 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3MCR unused
+T3MR0 E0074018
+
+Symbol: T3MR0
+   Definitions
+      At line 484 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3MR0 unused
+T3MR1 E007401C
+
+Symbol: T3MR1
+   Definitions
+      At line 485 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3MR1 unused
+T3MR2 E0074020
+
+Symbol: T3MR2
+   Definitions
+      At line 486 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3MR2 unused
+T3MR3 E0074024
+
+Symbol: T3MR3
+   Definitions
+      At line 487 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3MR3 unused
+T3PC E0074010
+
+Symbol: T3PC
+   Definitions
+      At line 482 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3PC unused
+T3PR E007400C
+
+Symbol: T3PR
+   Definitions
+      At line 481 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3PR unused
+T3TC E0074008
+
+Symbol: T3TC
+
+
+
+ARM Macro Assembler    Page 43 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 480 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3TC unused
+T3TCR E0074004
+
+Symbol: T3TCR
+   Definitions
+      At line 479 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: T3TCR unused
+TMR0_BASE_ADDR E0004000
+
+Symbol: TMR0_BASE_ADDR
+   Definitions
+      At line 417 in file LPC2368_asm.inc
+   Uses
+      At line 418 in file LPC2368_asm.inc
+      At line 419 in file LPC2368_asm.inc
+      At line 420 in file LPC2368_asm.inc
+      At line 421 in file LPC2368_asm.inc
+      At line 422 in file LPC2368_asm.inc
+      At line 423 in file LPC2368_asm.inc
+      At line 424 in file LPC2368_asm.inc
+      At line 425 in file LPC2368_asm.inc
+      At line 426 in file LPC2368_asm.inc
+      At line 427 in file LPC2368_asm.inc
+      At line 428 in file LPC2368_asm.inc
+      At line 429 in file LPC2368_asm.inc
+      At line 430 in file LPC2368_asm.inc
+      At line 431 in file LPC2368_asm.inc
+      At line 432 in file LPC2368_asm.inc
+      At line 433 in file LPC2368_asm.inc
+      At line 434 in file LPC2368_asm.inc
+
+TMR1_BASE_ADDR E0008000
+
+Symbol: TMR1_BASE_ADDR
+   Definitions
+      At line 437 in file LPC2368_asm.inc
+   Uses
+      At line 438 in file LPC2368_asm.inc
+      At line 439 in file LPC2368_asm.inc
+      At line 440 in file LPC2368_asm.inc
+      At line 441 in file LPC2368_asm.inc
+      At line 442 in file LPC2368_asm.inc
+      At line 443 in file LPC2368_asm.inc
+      At line 444 in file LPC2368_asm.inc
+      At line 445 in file LPC2368_asm.inc
+      At line 446 in file LPC2368_asm.inc
+      At line 447 in file LPC2368_asm.inc
+      At line 448 in file LPC2368_asm.inc
+      At line 449 in file LPC2368_asm.inc
+      At line 450 in file LPC2368_asm.inc
+      At line 451 in file LPC2368_asm.inc
+      At line 452 in file LPC2368_asm.inc
+      At line 453 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 44 Alphabetic symbol ordering
+Absolute symbols
+
+      At line 454 in file LPC2368_asm.inc
+
+TMR2_BASE_ADDR E0070000
+
+Symbol: TMR2_BASE_ADDR
+   Definitions
+      At line 457 in file LPC2368_asm.inc
+   Uses
+      At line 458 in file LPC2368_asm.inc
+      At line 459 in file LPC2368_asm.inc
+      At line 460 in file LPC2368_asm.inc
+      At line 461 in file LPC2368_asm.inc
+      At line 462 in file LPC2368_asm.inc
+      At line 463 in file LPC2368_asm.inc
+      At line 464 in file LPC2368_asm.inc
+      At line 465 in file LPC2368_asm.inc
+      At line 466 in file LPC2368_asm.inc
+      At line 467 in file LPC2368_asm.inc
+      At line 468 in file LPC2368_asm.inc
+      At line 469 in file LPC2368_asm.inc
+      At line 470 in file LPC2368_asm.inc
+      At line 471 in file LPC2368_asm.inc
+      At line 472 in file LPC2368_asm.inc
+      At line 473 in file LPC2368_asm.inc
+      At line 474 in file LPC2368_asm.inc
+
+TMR3_BASE_ADDR E0074000
+
+Symbol: TMR3_BASE_ADDR
+   Definitions
+      At line 477 in file LPC2368_asm.inc
+   Uses
+      At line 478 in file LPC2368_asm.inc
+      At line 479 in file LPC2368_asm.inc
+      At line 480 in file LPC2368_asm.inc
+      At line 481 in file LPC2368_asm.inc
+      At line 482 in file LPC2368_asm.inc
+      At line 483 in file LPC2368_asm.inc
+      At line 484 in file LPC2368_asm.inc
+      At line 485 in file LPC2368_asm.inc
+      At line 486 in file LPC2368_asm.inc
+      At line 487 in file LPC2368_asm.inc
+      At line 488 in file LPC2368_asm.inc
+      At line 489 in file LPC2368_asm.inc
+      At line 490 in file LPC2368_asm.inc
+      At line 491 in file LPC2368_asm.inc
+      At line 492 in file LPC2368_asm.inc
+      At line 493 in file LPC2368_asm.inc
+      At line 494 in file LPC2368_asm.inc
+
+U0ACR E000C020
+
+Symbol: U0ACR
+   Definitions
+      At line 359 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0ACR unused
+U0DLL E000C000
+
+
+
+ARM Macro Assembler    Page 45 Alphabetic symbol ordering
+Absolute symbols
+
+
+Symbol: U0DLL
+   Definitions
+      At line 351 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0DLL unused
+U0DLM E000C004
+
+Symbol: U0DLM
+   Definitions
+      At line 352 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0DLM unused
+U0FCR E000C008
+
+Symbol: U0FCR
+   Definitions
+      At line 355 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0FCR unused
+U0FDR E000C028
+
+Symbol: U0FDR
+   Definitions
+      At line 361 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0FDR unused
+U0ICR E000C024
+
+Symbol: U0ICR
+   Definitions
+      At line 360 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0ICR unused
+U0IER E000C004
+
+Symbol: U0IER
+   Definitions
+      At line 353 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0IER unused
+U0IIR E000C008
+
+Symbol: U0IIR
+   Definitions
+      At line 354 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0IIR unused
+U0LCR E000C00C
+
+Symbol: U0LCR
+   Definitions
+
+
+
+ARM Macro Assembler    Page 46 Alphabetic symbol ordering
+Absolute symbols
+
+      At line 356 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0LCR unused
+U0LSR E000C014
+
+Symbol: U0LSR
+   Definitions
+      At line 357 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0LSR unused
+U0RBR E000C000
+
+Symbol: U0RBR
+   Definitions
+      At line 349 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0RBR unused
+U0SCR E000C01C
+
+Symbol: U0SCR
+   Definitions
+      At line 358 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0SCR unused
+U0TER E000C030
+
+Symbol: U0TER
+   Definitions
+      At line 362 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0TER unused
+U0THR E000C000
+
+Symbol: U0THR
+   Definitions
+      At line 350 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U0THR unused
+U1ACR E0010020
+
+Symbol: U1ACR
+   Definitions
+      At line 378 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1ACR unused
+U1DLL E0010000
+
+Symbol: U1DLL
+   Definitions
+      At line 368 in file LPC2368_asm.inc
+   Uses
+      None
+
+
+
+ARM Macro Assembler    Page 47 Alphabetic symbol ordering
+Absolute symbols
+
+Comment: U1DLL unused
+U1DLM E0010004
+
+Symbol: U1DLM
+   Definitions
+      At line 369 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1DLM unused
+U1FCR E0010008
+
+Symbol: U1FCR
+   Definitions
+      At line 372 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1FCR unused
+U1FDR E0010028
+
+Symbol: U1FDR
+   Definitions
+      At line 379 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1FDR unused
+U1IER E0010004
+
+Symbol: U1IER
+   Definitions
+      At line 370 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1IER unused
+U1IIR E0010008
+
+Symbol: U1IIR
+   Definitions
+      At line 371 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1IIR unused
+U1LCR E001000C
+
+Symbol: U1LCR
+   Definitions
+      At line 373 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1LCR unused
+U1LSR E0010014
+
+Symbol: U1LSR
+   Definitions
+      At line 375 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1LSR unused
+U1MCR E0010010
+
+
+
+
+ARM Macro Assembler    Page 48 Alphabetic symbol ordering
+Absolute symbols
+
+Symbol: U1MCR
+   Definitions
+      At line 374 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1MCR unused
+U1MSR E0010018
+
+Symbol: U1MSR
+   Definitions
+      At line 376 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1MSR unused
+U1RBR E0010000
+
+Symbol: U1RBR
+   Definitions
+      At line 366 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1RBR unused
+U1SCR E001001C
+
+Symbol: U1SCR
+   Definitions
+      At line 377 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1SCR unused
+U1TER E0010030
+
+Symbol: U1TER
+   Definitions
+      At line 380 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1TER unused
+U1THR E0010000
+
+Symbol: U1THR
+   Definitions
+      At line 367 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U1THR unused
+U2ACR E0078020
+
+Symbol: U2ACR
+   Definitions
+      At line 394 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2ACR unused
+U2DLL E0078000
+
+Symbol: U2DLL
+   Definitions
+      At line 386 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 49 Alphabetic symbol ordering
+Absolute symbols
+
+   Uses
+      None
+Comment: U2DLL unused
+U2DLM E0078004
+
+Symbol: U2DLM
+   Definitions
+      At line 387 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2DLM unused
+U2FCR E0078008
+
+Symbol: U2FCR
+   Definitions
+      At line 390 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2FCR unused
+U2FDR E0078028
+
+Symbol: U2FDR
+   Definitions
+      At line 396 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2FDR unused
+U2ICR E0078024
+
+Symbol: U2ICR
+   Definitions
+      At line 395 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2ICR unused
+U2IER E0078004
+
+Symbol: U2IER
+   Definitions
+      At line 388 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2IER unused
+U2IIR E0078008
+
+Symbol: U2IIR
+   Definitions
+      At line 389 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2IIR unused
+U2LCR E007800C
+
+Symbol: U2LCR
+   Definitions
+      At line 391 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2LCR unused
+
+
+
+ARM Macro Assembler    Page 50 Alphabetic symbol ordering
+Absolute symbols
+
+U2LSR E0078014
+
+Symbol: U2LSR
+   Definitions
+      At line 392 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2LSR unused
+U2RBR E0078000
+
+Symbol: U2RBR
+   Definitions
+      At line 384 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2RBR unused
+U2SCR E007801C
+
+Symbol: U2SCR
+   Definitions
+      At line 393 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2SCR unused
+U2TER E0078030
+
+Symbol: U2TER
+   Definitions
+      At line 397 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2TER unused
+U2THR E0078000
+
+Symbol: U2THR
+   Definitions
+      At line 385 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U2THR unused
+U3ACR E007C020
+
+Symbol: U3ACR
+   Definitions
+      At line 411 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3ACR unused
+U3DLL E007C000
+
+Symbol: U3DLL
+   Definitions
+      At line 403 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3DLL unused
+U3DLM E007C004
+
+Symbol: U3DLM
+
+
+
+ARM Macro Assembler    Page 51 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 404 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3DLM unused
+U3FCR E007C008
+
+Symbol: U3FCR
+   Definitions
+      At line 407 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3FCR unused
+U3FDR E007C028
+
+Symbol: U3FDR
+   Definitions
+      At line 413 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3FDR unused
+U3ICR E007C024
+
+Symbol: U3ICR
+   Definitions
+      At line 412 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3ICR unused
+U3IER E007C004
+
+Symbol: U3IER
+   Definitions
+      At line 405 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3IER unused
+U3IIR E007C008
+
+Symbol: U3IIR
+   Definitions
+      At line 406 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3IIR unused
+U3LCR E007C00C
+
+Symbol: U3LCR
+   Definitions
+      At line 408 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3LCR unused
+U3LSR E007C014
+
+Symbol: U3LSR
+   Definitions
+      At line 409 in file LPC2368_asm.inc
+   Uses
+
+
+
+ARM Macro Assembler    Page 52 Alphabetic symbol ordering
+Absolute symbols
+
+      None
+Comment: U3LSR unused
+U3RBR E007C000
+
+Symbol: U3RBR
+   Definitions
+      At line 401 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3RBR unused
+U3SCR E007C01C
+
+Symbol: U3SCR
+   Definitions
+      At line 410 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3SCR unused
+U3TER E007C030
+
+Symbol: U3TER
+   Definitions
+      At line 414 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3TER unused
+U3THR E007C000
+
+Symbol: U3THR
+   Definitions
+      At line 402 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: U3THR unused
+UART0_BASE_ADDR E000C000
+
+Symbol: UART0_BASE_ADDR
+   Definitions
+      At line 348 in file LPC2368_asm.inc
+   Uses
+      At line 349 in file LPC2368_asm.inc
+      At line 350 in file LPC2368_asm.inc
+      At line 351 in file LPC2368_asm.inc
+      At line 352 in file LPC2368_asm.inc
+      At line 353 in file LPC2368_asm.inc
+      At line 354 in file LPC2368_asm.inc
+      At line 355 in file LPC2368_asm.inc
+      At line 356 in file LPC2368_asm.inc
+      At line 357 in file LPC2368_asm.inc
+      At line 358 in file LPC2368_asm.inc
+      At line 359 in file LPC2368_asm.inc
+      At line 360 in file LPC2368_asm.inc
+      At line 361 in file LPC2368_asm.inc
+      At line 362 in file LPC2368_asm.inc
+
+UART1_BASE_ADDR E0010000
+
+Symbol: UART1_BASE_ADDR
+   Definitions
+
+
+
+ARM Macro Assembler    Page 53 Alphabetic symbol ordering
+Absolute symbols
+
+      At line 365 in file LPC2368_asm.inc
+   Uses
+      At line 366 in file LPC2368_asm.inc
+      At line 367 in file LPC2368_asm.inc
+      At line 368 in file LPC2368_asm.inc
+      At line 369 in file LPC2368_asm.inc
+      At line 370 in file LPC2368_asm.inc
+      At line 371 in file LPC2368_asm.inc
+      At line 372 in file LPC2368_asm.inc
+      At line 373 in file LPC2368_asm.inc
+      At line 374 in file LPC2368_asm.inc
+      At line 375 in file LPC2368_asm.inc
+      At line 376 in file LPC2368_asm.inc
+      At line 377 in file LPC2368_asm.inc
+      At line 378 in file LPC2368_asm.inc
+      At line 379 in file LPC2368_asm.inc
+      At line 380 in file LPC2368_asm.inc
+
+UART2_BASE_ADDR E0078000
+
+Symbol: UART2_BASE_ADDR
+   Definitions
+      At line 383 in file LPC2368_asm.inc
+   Uses
+      At line 384 in file LPC2368_asm.inc
+      At line 385 in file LPC2368_asm.inc
+      At line 386 in file LPC2368_asm.inc
+      At line 387 in file LPC2368_asm.inc
+      At line 388 in file LPC2368_asm.inc
+      At line 389 in file LPC2368_asm.inc
+      At line 390 in file LPC2368_asm.inc
+      At line 391 in file LPC2368_asm.inc
+      At line 392 in file LPC2368_asm.inc
+      At line 393 in file LPC2368_asm.inc
+      At line 394 in file LPC2368_asm.inc
+      At line 395 in file LPC2368_asm.inc
+      At line 396 in file LPC2368_asm.inc
+      At line 397 in file LPC2368_asm.inc
+
+UART3_BASE_ADDR E007C000
+
+Symbol: UART3_BASE_ADDR
+   Definitions
+      At line 400 in file LPC2368_asm.inc
+   Uses
+      At line 401 in file LPC2368_asm.inc
+      At line 402 in file LPC2368_asm.inc
+      At line 403 in file LPC2368_asm.inc
+      At line 404 in file LPC2368_asm.inc
+      At line 405 in file LPC2368_asm.inc
+      At line 406 in file LPC2368_asm.inc
+      At line 407 in file LPC2368_asm.inc
+      At line 408 in file LPC2368_asm.inc
+      At line 409 in file LPC2368_asm.inc
+      At line 410 in file LPC2368_asm.inc
+      At line 411 in file LPC2368_asm.inc
+      At line 412 in file LPC2368_asm.inc
+      At line 413 in file LPC2368_asm.inc
+      At line 414 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 54 Alphabetic symbol ordering
+Absolute symbols
+
+
+VIC_BASE_ADDR FFFFF000
+
+Symbol: VIC_BASE_ADDR
+   Definitions
+      At line 240 in file LPC2368_asm.inc
+   Uses
+      At line 241 in file LPC2368_asm.inc
+      At line 242 in file LPC2368_asm.inc
+      At line 243 in file LPC2368_asm.inc
+      At line 244 in file LPC2368_asm.inc
+      At line 245 in file LPC2368_asm.inc
+      At line 246 in file LPC2368_asm.inc
+      At line 247 in file LPC2368_asm.inc
+      At line 248 in file LPC2368_asm.inc
+      At line 249 in file LPC2368_asm.inc
+      At line 250 in file LPC2368_asm.inc
+      At line 253 in file LPC2368_asm.inc
+      At line 254 in file LPC2368_asm.inc
+      At line 255 in file LPC2368_asm.inc
+      At line 256 in file LPC2368_asm.inc
+      At line 257 in file LPC2368_asm.inc
+      At line 258 in file LPC2368_asm.inc
+      At line 259 in file LPC2368_asm.inc
+      At line 260 in file LPC2368_asm.inc
+      At line 261 in file LPC2368_asm.inc
+      At line 262 in file LPC2368_asm.inc
+      At line 263 in file LPC2368_asm.inc
+      At line 264 in file LPC2368_asm.inc
+      At line 265 in file LPC2368_asm.inc
+      At line 266 in file LPC2368_asm.inc
+      At line 267 in file LPC2368_asm.inc
+      At line 268 in file LPC2368_asm.inc
+      At line 269 in file LPC2368_asm.inc
+      At line 270 in file LPC2368_asm.inc
+      At line 271 in file LPC2368_asm.inc
+      At line 272 in file LPC2368_asm.inc
+      At line 273 in file LPC2368_asm.inc
+      At line 274 in file LPC2368_asm.inc
+      At line 275 in file LPC2368_asm.inc
+      At line 276 in file LPC2368_asm.inc
+      At line 277 in file LPC2368_asm.inc
+      At line 278 in file LPC2368_asm.inc
+      At line 279 in file LPC2368_asm.inc
+      At line 280 in file LPC2368_asm.inc
+      At line 281 in file LPC2368_asm.inc
+      At line 282 in file LPC2368_asm.inc
+      At line 283 in file LPC2368_asm.inc
+      At line 284 in file LPC2368_asm.inc
+      At line 287 in file LPC2368_asm.inc
+      At line 288 in file LPC2368_asm.inc
+      At line 289 in file LPC2368_asm.inc
+      At line 290 in file LPC2368_asm.inc
+      At line 291 in file LPC2368_asm.inc
+      At line 292 in file LPC2368_asm.inc
+      At line 293 in file LPC2368_asm.inc
+      At line 294 in file LPC2368_asm.inc
+      At line 295 in file LPC2368_asm.inc
+      At line 296 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 55 Alphabetic symbol ordering
+Absolute symbols
+
+      At line 297 in file LPC2368_asm.inc
+      At line 298 in file LPC2368_asm.inc
+      At line 299 in file LPC2368_asm.inc
+      At line 300 in file LPC2368_asm.inc
+      At line 301 in file LPC2368_asm.inc
+      At line 302 in file LPC2368_asm.inc
+      At line 303 in file LPC2368_asm.inc
+      At line 304 in file LPC2368_asm.inc
+      At line 305 in file LPC2368_asm.inc
+      At line 306 in file LPC2368_asm.inc
+      At line 307 in file LPC2368_asm.inc
+      At line 308 in file LPC2368_asm.inc
+      At line 309 in file LPC2368_asm.inc
+      At line 310 in file LPC2368_asm.inc
+      At line 311 in file LPC2368_asm.inc
+      At line 312 in file LPC2368_asm.inc
+      At line 313 in file LPC2368_asm.inc
+      At line 314 in file LPC2368_asm.inc
+      At line 315 in file LPC2368_asm.inc
+      At line 316 in file LPC2368_asm.inc
+      At line 317 in file LPC2368_asm.inc
+      At line 318 in file LPC2368_asm.inc
+      At line 320 in file LPC2368_asm.inc
+
+VIC_FIQStatus FFFFF004
+
+Symbol: VIC_FIQStatus
+   Definitions
+      At line 242 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_FIQStatus unused
+VIC_IRQStatus FFFFF000
+
+Symbol: VIC_IRQStatus
+   Definitions
+      At line 241 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_IRQStatus unused
+VIC_IntEnClr FFFFF014
+
+Symbol: VIC_IntEnClr
+   Definitions
+      At line 246 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_IntEnClr unused
+VIC_IntEnable FFFFF010
+
+Symbol: VIC_IntEnable
+   Definitions
+      At line 245 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_IntEnable unused
+VIC_IntSelect FFFFF00C
+
+Symbol: VIC_IntSelect
+
+
+
+ARM Macro Assembler    Page 56 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 244 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_IntSelect unused
+VIC_Protection FFFFF020
+
+Symbol: VIC_Protection
+   Definitions
+      At line 249 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_Protection unused
+VIC_RawIntr FFFFF008
+
+Symbol: VIC_RawIntr
+   Definitions
+      At line 243 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_RawIntr unused
+VIC_SWPrioMask FFFFF024
+
+Symbol: VIC_SWPrioMask
+   Definitions
+      At line 250 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_SWPrioMask unused
+VIC_SoftInt FFFFF018
+
+Symbol: VIC_SoftInt
+   Definitions
+      At line 247 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_SoftInt unused
+VIC_SoftIntClr FFFFF01C
+
+Symbol: VIC_SoftIntClr
+   Definitions
+      At line 248 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_SoftIntClr unused
+VIC_VectAddr FFFFFF00
+
+Symbol: VIC_VectAddr
+   Definitions
+      At line 320 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr unused
+VIC_VectAddr0 FFFFF100
+
+Symbol: VIC_VectAddr0
+   Definitions
+      At line 253 in file LPC2368_asm.inc
+   Uses
+
+
+
+ARM Macro Assembler    Page 57 Alphabetic symbol ordering
+Absolute symbols
+
+      None
+Comment: VIC_VectAddr0 unused
+VIC_VectAddr1 FFFFF104
+
+Symbol: VIC_VectAddr1
+   Definitions
+      At line 254 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr1 unused
+VIC_VectAddr10 FFFFF128
+
+Symbol: VIC_VectAddr10
+   Definitions
+      At line 263 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr10 unused
+VIC_VectAddr11 FFFFF12C
+
+Symbol: VIC_VectAddr11
+   Definitions
+      At line 264 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr11 unused
+VIC_VectAddr12 FFFFF130
+
+Symbol: VIC_VectAddr12
+   Definitions
+      At line 265 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr12 unused
+VIC_VectAddr13 FFFFF134
+
+Symbol: VIC_VectAddr13
+   Definitions
+      At line 266 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr13 unused
+VIC_VectAddr14 FFFFF138
+
+Symbol: VIC_VectAddr14
+   Definitions
+      At line 267 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr14 unused
+VIC_VectAddr15 FFFFF13C
+
+Symbol: VIC_VectAddr15
+   Definitions
+      At line 268 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr15 unused
+VIC_VectAddr16 FFFFF140
+
+
+
+ARM Macro Assembler    Page 58 Alphabetic symbol ordering
+Absolute symbols
+
+
+Symbol: VIC_VectAddr16
+   Definitions
+      At line 269 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr16 unused
+VIC_VectAddr17 FFFFF144
+
+Symbol: VIC_VectAddr17
+   Definitions
+      At line 270 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr17 unused
+VIC_VectAddr18 FFFFF148
+
+Symbol: VIC_VectAddr18
+   Definitions
+      At line 271 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr18 unused
+VIC_VectAddr19 FFFFF14C
+
+Symbol: VIC_VectAddr19
+   Definitions
+      At line 272 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr19 unused
+VIC_VectAddr2 FFFFF108
+
+Symbol: VIC_VectAddr2
+   Definitions
+      At line 255 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr2 unused
+VIC_VectAddr20 FFFFF150
+
+Symbol: VIC_VectAddr20
+   Definitions
+      At line 273 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr20 unused
+VIC_VectAddr21 FFFFF154
+
+Symbol: VIC_VectAddr21
+   Definitions
+      At line 274 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr21 unused
+VIC_VectAddr22 FFFFF158
+
+Symbol: VIC_VectAddr22
+   Definitions
+
+
+
+ARM Macro Assembler    Page 59 Alphabetic symbol ordering
+Absolute symbols
+
+      At line 275 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr22 unused
+VIC_VectAddr23 FFFFF15C
+
+Symbol: VIC_VectAddr23
+   Definitions
+      At line 276 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr23 unused
+VIC_VectAddr24 FFFFF160
+
+Symbol: VIC_VectAddr24
+   Definitions
+      At line 277 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr24 unused
+VIC_VectAddr25 FFFFF164
+
+Symbol: VIC_VectAddr25
+   Definitions
+      At line 278 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr25 unused
+VIC_VectAddr26 FFFFF168
+
+Symbol: VIC_VectAddr26
+   Definitions
+      At line 279 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr26 unused
+VIC_VectAddr27 FFFFF16C
+
+Symbol: VIC_VectAddr27
+   Definitions
+      At line 280 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr27 unused
+VIC_VectAddr28 FFFFF170
+
+Symbol: VIC_VectAddr28
+   Definitions
+      At line 281 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr28 unused
+VIC_VectAddr29 FFFFF174
+
+Symbol: VIC_VectAddr29
+   Definitions
+      At line 282 in file LPC2368_asm.inc
+   Uses
+      None
+
+
+
+ARM Macro Assembler    Page 60 Alphabetic symbol ordering
+Absolute symbols
+
+Comment: VIC_VectAddr29 unused
+VIC_VectAddr3 FFFFF10C
+
+Symbol: VIC_VectAddr3
+   Definitions
+      At line 256 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr3 unused
+VIC_VectAddr30 FFFFF178
+
+Symbol: VIC_VectAddr30
+   Definitions
+      At line 283 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr30 unused
+VIC_VectAddr31 FFFFF17C
+
+Symbol: VIC_VectAddr31
+   Definitions
+      At line 284 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr31 unused
+VIC_VectAddr4 FFFFF110
+
+Symbol: VIC_VectAddr4
+   Definitions
+      At line 257 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr4 unused
+VIC_VectAddr5 FFFFF114
+
+Symbol: VIC_VectAddr5
+   Definitions
+      At line 258 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr5 unused
+VIC_VectAddr6 FFFFF118
+
+Symbol: VIC_VectAddr6
+   Definitions
+      At line 259 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr6 unused
+VIC_VectAddr7 FFFFF11C
+
+Symbol: VIC_VectAddr7
+   Definitions
+      At line 260 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr7 unused
+VIC_VectAddr8 FFFFF120
+
+
+
+
+ARM Macro Assembler    Page 61 Alphabetic symbol ordering
+Absolute symbols
+
+Symbol: VIC_VectAddr8
+   Definitions
+      At line 261 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr8 unused
+VIC_VectAddr9 FFFFF124
+
+Symbol: VIC_VectAddr9
+   Definitions
+      At line 262 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectAddr9 unused
+VIC_VectPrio0 FFFFF200
+
+Symbol: VIC_VectPrio0
+   Definitions
+      At line 287 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio0 unused
+VIC_VectPrio1 FFFFF204
+
+Symbol: VIC_VectPrio1
+   Definitions
+      At line 288 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio1 unused
+VIC_VectPrio10 FFFFF228
+
+Symbol: VIC_VectPrio10
+   Definitions
+      At line 297 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio10 unused
+VIC_VectPrio11 FFFFF22C
+
+Symbol: VIC_VectPrio11
+   Definitions
+      At line 298 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio11 unused
+VIC_VectPrio12 FFFFF230
+
+Symbol: VIC_VectPrio12
+   Definitions
+      At line 299 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio12 unused
+VIC_VectPrio13 FFFFF234
+
+Symbol: VIC_VectPrio13
+   Definitions
+      At line 300 in file LPC2368_asm.inc
+
+
+
+ARM Macro Assembler    Page 62 Alphabetic symbol ordering
+Absolute symbols
+
+   Uses
+      None
+Comment: VIC_VectPrio13 unused
+VIC_VectPrio14 FFFFF238
+
+Symbol: VIC_VectPrio14
+   Definitions
+      At line 301 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio14 unused
+VIC_VectPrio15 FFFFF23C
+
+Symbol: VIC_VectPrio15
+   Definitions
+      At line 302 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio15 unused
+VIC_VectPrio16 FFFFF240
+
+Symbol: VIC_VectPrio16
+   Definitions
+      At line 303 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio16 unused
+VIC_VectPrio17 FFFFF244
+
+Symbol: VIC_VectPrio17
+   Definitions
+      At line 304 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio17 unused
+VIC_VectPrio18 FFFFF248
+
+Symbol: VIC_VectPrio18
+   Definitions
+      At line 305 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio18 unused
+VIC_VectPrio19 FFFFF24C
+
+Symbol: VIC_VectPrio19
+   Definitions
+      At line 306 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio19 unused
+VIC_VectPrio2 FFFFF208
+
+Symbol: VIC_VectPrio2
+   Definitions
+      At line 289 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio2 unused
+
+
+
+ARM Macro Assembler    Page 63 Alphabetic symbol ordering
+Absolute symbols
+
+VIC_VectPrio20 FFFFF250
+
+Symbol: VIC_VectPrio20
+   Definitions
+      At line 307 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio20 unused
+VIC_VectPrio21 FFFFF254
+
+Symbol: VIC_VectPrio21
+   Definitions
+      At line 308 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio21 unused
+VIC_VectPrio22 FFFFF258
+
+Symbol: VIC_VectPrio22
+   Definitions
+      At line 309 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio22 unused
+VIC_VectPrio23 FFFFF25C
+
+Symbol: VIC_VectPrio23
+   Definitions
+      At line 310 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio23 unused
+VIC_VectPrio24 FFFFF260
+
+Symbol: VIC_VectPrio24
+   Definitions
+      At line 311 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio24 unused
+VIC_VectPrio25 FFFFF264
+
+Symbol: VIC_VectPrio25
+   Definitions
+      At line 312 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio25 unused
+VIC_VectPrio26 FFFFF268
+
+Symbol: VIC_VectPrio26
+   Definitions
+      At line 313 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio26 unused
+VIC_VectPrio27 FFFFF26C
+
+Symbol: VIC_VectPrio27
+
+
+
+ARM Macro Assembler    Page 64 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 314 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio27 unused
+VIC_VectPrio28 FFFFF270
+
+Symbol: VIC_VectPrio28
+   Definitions
+      At line 315 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio28 unused
+VIC_VectPrio29 FFFFF274
+
+Symbol: VIC_VectPrio29
+   Definitions
+      At line 316 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio29 unused
+VIC_VectPrio3 FFFFF20C
+
+Symbol: VIC_VectPrio3
+   Definitions
+      At line 290 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio3 unused
+VIC_VectPrio30 FFFFF278
+
+Symbol: VIC_VectPrio30
+   Definitions
+      At line 317 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio30 unused
+VIC_VectPrio31 FFFFF27C
+
+Symbol: VIC_VectPrio31
+   Definitions
+      At line 318 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio31 unused
+VIC_VectPrio4 FFFFF210
+
+Symbol: VIC_VectPrio4
+   Definitions
+      At line 291 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio4 unused
+VIC_VectPrio5 FFFFF214
+
+Symbol: VIC_VectPrio5
+   Definitions
+      At line 292 in file LPC2368_asm.inc
+   Uses
+
+
+
+ARM Macro Assembler    Page 65 Alphabetic symbol ordering
+Absolute symbols
+
+      None
+Comment: VIC_VectPrio5 unused
+VIC_VectPrio6 FFFFF218
+
+Symbol: VIC_VectPrio6
+   Definitions
+      At line 293 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio6 unused
+VIC_VectPrio7 FFFFF21C
+
+Symbol: VIC_VectPrio7
+   Definitions
+      At line 294 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio7 unused
+VIC_VectPrio8 FFFFF220
+
+Symbol: VIC_VectPrio8
+   Definitions
+      At line 295 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio8 unused
+VIC_VectPrio9 FFFFF224
+
+Symbol: VIC_VectPrio9
+   Definitions
+      At line 296 in file LPC2368_asm.inc
+   Uses
+      None
+Comment: VIC_VectPrio9 unused
+427 symbols
+765 symbols in table

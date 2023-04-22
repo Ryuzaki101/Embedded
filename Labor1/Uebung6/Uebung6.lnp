@@ -1,0 +1,7 @@
+--cpu ARM7TDMI
+".\lpc2300.o"
+".\aufg6.o"
+--strict --scatter ".\Uebung6.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Uebung6.map" -o .\Uebung6.axf

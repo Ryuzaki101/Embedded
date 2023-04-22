@@ -1,0 +1,5 @@
+Dependencies for Project 'Uebung5', Target 'Target 1': (DO NOT MODIFY !)
+F (.\LPC2300.s)(0x55526E54)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\listings\lpc2300.lst --xref -o .\objects\lpc2300.o --depend .\objects\lpc2300.d)
+F (.\aufg5.c)(0x55534F28)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork --split_sections-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\objects\aufg5.o --omf_browse .\objects\aufg5.crf --depend .\objects\aufg5.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC23xx.h)(0x53468A9A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x53468EA4)
