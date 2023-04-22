@@ -1,0 +1,75 @@
+ 	AREA arm1, CODE
+	INCLUDE LPC2368_asm.inc		; Achtung, Includieren nur in einer AREA!
+
+	ENTRY
+	EXPORT start
+start				   		; Beispiel-Befehle
+	LDR R0, =0x12345678 ; 0x0000016C  E59F0024  LDR       R0,[PC,#0x0024]
+	MOV	R1, #0x000000FF ; 0x00000170  E3A010FF  MOV       R1,#0x000000FF
+	MOV	R2, #0x00000FF0 ; 0x00000174  E3A02EFF  MOV       R2,#0x00000FF0
+	MOV	R3, #0x0000FF00 ; 0x00000178  E3A03CFF  MOV       R3,#0x0000FF00
+	MOV	R4, #0x000FF000 ; 0x0000017C  E3A04AFF  MOV       R4,#0x000FF000
+	MOV	R5, #0x00FF0000 ; 0x00000180  E3A058FF  MOV       R5,#0x00FF0000
+	MOV	R6, #0x0FF00000 ; 0x00000184  E3A066FF  MOV       R6,#0x0FF00000
+	MOV	R7, #0xFF000000 ; 0x00000188  E3A074FF  MOV       R7,#0xFF000000
+	MOV R14,#0x00000014 ; 0x0000018C  E3A0E014  MOV       R14,#0x00000014
+	LDR LR, =0x00ABCDEF ; 0x00000190  E59FE004  LDR       R14,[PC,#0x0004]
+	; Adr. der Konstanten = Adr. des Befehls + 8 + Offset
+
+halt					; Programmende
+	B	halt
+	END	
+
+-----
+   501: ; Enter the C code 
+   502:  
+   503:                 IMPORT  start 
+0x00000150  E24DAB01  SUB       R10,R13,#0x00000400
+   504:                 LDR     R0, =start 
+0x00000154  E59F000C  LDR       R0,[PC,#0x000C]
+   505:                 BX      R0 
+0x00000158  E12FFF10  BX        R0
+0x0000015C  E01FC000  ANDS      R12,PC,R0
+0x00000160  00FF7FFF  (???)EQ   
+0x00000164  40000508  ANDMI     R0,R0,R8,LSL #10
+0x00000168  0000016C  ANDEQ     R0,R0,R12,ROR #2
+     7:         LDR R0, =0x12345678 ; 0x0000016C  E59F0024  LDR       R0,[PC,#0x0024] 
+0x0000016C  E59F0024  LDR       R0,[PC,#0x0024]
+     8:         MOV     R1, #0x000000FF ; 0x00000170  E3A010FF  MOV       R1,#0x000000FF 
+0x00000170  E3A010FF  MOV       R1,#0x000000FF
+     9:         MOV     R2, #0x00000FF0 ; 0x00000174  E3A02EFF  MOV       R2,#0x00000FF0 
+0x00000174  E3A02EFF  MOV       R2,#0x00000FF0
+    10:         MOV     R3, #0x0000FF00 ; 0x00000178  E3A03CFF  MOV       R3,#0x0000FF00 
+0x00000178  E3A03CFF  MOV       R3,#0x0000FF00
+    11:         MOV     R4, #0x000FF000 ; 0x0000017C  E3A04AFF  MOV       R4,#0x000FF000 
+0x0000017C  E3A04AFF  MOV       R4,#0x000FF000
+    12:         MOV     R5, #0x00FF0000 ; 0x00000180  E3A058FF  MOV       R5,#0x00FF0000 
+0x00000180  E3A058FF  MOV       R5,#0x00FF0000
+    13:         MOV     R6, #0x0FF00000 ; 0x00000184  E3A066FF  MOV       R6,#0x0FF00000 
+0x00000184  E3A066FF  MOV       R6,#0x0FF00000
+    14:         MOV     R7, #0xFF000000 ; 0x00000188  E3A074FF  MOV       R7,#0xFF000000 
+0x00000188  E3A074FF  MOV       R7,#0xFF000000
+    15:         MOV R14,#0x00000014 ; 0x0000018C  E3A0E014  MOV       R14,#0x00000014 
+0x0000018C  E3A0E014  MOV       R14,#0x00000014
+    16:         LDR LR, =0xABCDEF01 ; 0x00000190  E59FE004  LDR       R14,[PC,#0x0004] 
+    17:         ; Adr. der Konstanten = Adr. des Befehls + 8 + Offset 
+    18:  
+    19: halt                    ; Programmende 
+0x00000190  E59FE004  LDR       R14,[PC,#0x0004]
+    20:         B       halt 
+0x00000194  EAFFFFFE  B         0x00000194
+0x00000198  12345678  EORNES    R5,R4,#0x07800000
+0x0000019C  ABCDEF01  BLGE      0xFF37BDA8
+0x000001A0  00000000  ANDEQ     R0,R0,R0
+0x000001A4  00000000  ANDEQ     R0,R0,R0
+0x000001A8  00000000  ANDEQ     R0,R0,R0
+0x000001AC  00000000  ANDEQ     R0,R0,R0
+0x000001B0  00000000  ANDEQ     R0,R0,R0
+-----
+
+[Build Output]
+linking...
+arm_demo_asm.sct(8): warning: L6314W: No section matches pattern *(InRoot$$Sections).
+Program Size: Code=416 RO-data=0 RW-data=0 ZI-data=1288  
+arm_demo_asm.sct: Finished: 0 information, 1 warning and 0 error messages.
+"arm_demo_asm.axf" - 0 Error(s), 1 Warning(s).

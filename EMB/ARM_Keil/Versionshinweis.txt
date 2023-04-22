@@ -1,0 +1,131 @@
+
+Library Prof. K.-H.Krauß / Prof. Dr. Kabulepa / Hochschule Mannheim / Institut für Embedded Systems
+mit Labor-Dateien zur Vorlesung EMB1
+
+Für ARM7 (LPC2368): Keil µVision / RealView MDK v4.20
+___________________________________________________________________________________________________
+
+  History
+___________________________________________________________________________________________________
+
+Mo 27.10.14
+  demo_projekte mit Unterverzeichnis asm
+  asm\arm_demo_asm\befehle.s  mit ENTRY zur Vermeidung einer zweiten Warnung.
+  Jetzt unter Keil µVision 5 (mdk v5.11a)
+___________________________________________________________________________________________________
+
+Di 27.05.14
+  Teilung der Library nach Vorlesungsfächern
+___________________________________________________________________________________________________
+
+Lib-Krauß_21.Mai_2013.zip
+
+    Neu:
+    - arm_demo_asm2 (ohne SWI, mit ENTRY + Disassembly)
+
+    Geändert:
+    - PIC Befehle.asm Demo (mit Configuration Bits, Stimulus Workbook, Trace, Logic Analyzer)
+    - PIC LCD-Ausgabe Demo 2013-0422 (LCD.lib aus dem Projekt genommen, geht nur über Include-Suchpfad)
+___________________________________________________________________________________________________
+
+Lib-Krauß_27.Nov_2012.zip
+
+    Geändert:
+    - ARM2_CAN-Vorlage:
+	  mit Anzeige ID+Zähler (geändert: main.c  CAN.h  CAN.c)
+___________________________________________________________________________________________________
+
+Lib-Krauß_8.Juni_2012.zip
+
+    Geändert:
+	- PIC4_Interrupt-Vorlage.c
+	    Zeile 36-39: unsigned char für LCD-Zeichenketten
+___________________________________________________________________________________________________
+
+Lib-Krauß_6.Juni_2012.zip
+
+    Geändert:
+	- arm_demo_asm: #delete_µVision_output_files.bat
+	  ohne Löschen der Dateien *.uvgui.* (geöffnete Dateien im Editor)
+___________________________________________________________________________________________________
+
+Lib-Krauß_3.Mai_2012.zip
+
+    Geändert:
+    - ARM2_CAN-Vorlage:
+	  main.c  ohne Senden bei Reset (Zeile 67: first Transmission)
+___________________________________________________________________________________________________
+
+Lib-Krauß_15.Dez_2011.zip
+
+    Geändert:
+    - ARM4_FreeRTOS-Vorlage:
+        LPC2300freeRTOS.s  MAM Disabled + EMC ausgeschaltet
+        Quelltexte umbenannt arm5 -> arm4
+          arm4_vorlage.c
+          main_Vorlage_arm4.c
+___________________________________________________________________________________________________
+
+Lib-Krauß_8.Dez_2011.zip
+
+    Geändert:
+  - PIC: PIC2_PWM.c
+      Kommentare für LCD (Prototypen in lcd.h)
+___________________________________________________________________________________________________
+
+Lib-Krauß_28.Nov_2011.zip
+
+  Hinzugefügt:
+  - PIC: 3 MPLAB C18 LCD Lib-Erweiterung 2011-0419
+      Screenshots der Lib-Erweiterung
+      3 - LCD Lib Inhalte auflisten.bat
+___________________________________________________________________________________________________
+
+Lib-Krauß_25.Mai_2011.zip
+
+Für PIC: Microchip MPLAB v8.63 / MPLAB C18 v3.37
+    ARM: Keil µVision / RealView MDK v4.20
+
+    Geändert:
+  - PIC: alle C-Dateien PIC2,3,4,5,6
+      Configuration Bit Settings, Anpassungen für NEUE_PLATINE, Includes im Projektverzeichnis
+  - ARM:
+      LPC2300_asm.s       ohne SWI-Handler
+      LPC2300_asm_swi.s   mit  SWI-Handler
+___________________________________________________________________________________________________
+
+Lib-Krauß_18.Mai_2011.zip
+  Geändert:
+  - ARM  LPC2xxx_embedded.h :
+      UART0 + UART1 ersetzt durch UART0_ID + UART1_ID
+      CAN-Einträge vorhanden
+___________________________________________________________________________________________________
+
+Lib-Krauß_16.Mai_2011.zip
+
+  Geändert:
+  - PIC LCD-Ausgabe Demo 2011-0516  für neue PIC-Demoboards
+      C18-Demoprojekt mit erweiterter Library  p18F452_LCD.lib  und
+  	  #pragma config OSC=HS,WDT=OFF,LVP=OFF  für Configuration Bit Settings
+
+  Hinzugefügt:
+  - PIC Befehle.asm Demo
+      Assembler-Projekt mit Configuration Bit Settings und Watch-Fenster
+___________________________________________________________________________________________________
+
+Lib-Krauß_2.Mai_2011.zip
+
+  Geändert:
+  - MPLAB LCD Lib-Erweiterung für neue PIC-Demoboards, Compiler ab v3.37, WinXP / Win7
+
+  - LPC2368_asm.inc  mit IF DEF für Keil ab v4.12
+  - Keil-Projekte im neuen .uvproj-Format mit Einstellungen
+      [Linker]     x  Use Memory Layout from Target Dialog
+      [Debug]      ULINK Settings mit 200kHz
+      [Utilities]  ULINK Settings mit LPC2000 512kB
+
+  Hinzugefügt:
+  - PIC LCD-Ausgabe Demo 2011-0414  für neue PIC-Demoboards
+  - #delete_MPLAB_output_files.bat    und
+    #delete_µVision_output_files.bat  zum Bereinigen von Projekten
+___________________________________________________________________________________________________
